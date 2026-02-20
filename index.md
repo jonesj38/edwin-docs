@@ -111,7 +111,6 @@ Open the browser Control UI after the Gateway starts.
 - Remote access: [Web surfaces](/web) and [Tailscale](/gateway/tailscale)
 
 <p align="center">
-  <img src="/whatsapp-edwin.jpg" alt="Edwin" width="420" />
 </p>
 
 ## Configuration (optional)
