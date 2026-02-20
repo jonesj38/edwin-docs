@@ -9,16 +9,9 @@ title: "Edwin"
 
 <p align="center">
     <img
-        src="/assets/edwin-logo-text-dark.svg"
+        src="/assets/edwin-logo.png"
         alt="Edwin"
-        width="500"
-        class="dark:hidden"
-    />
-    <img
-        src="/assets/edwin-logo-text.svg"
-        alt="Edwin"
-        width="500"
-        class="hidden dark:block"
+        width="200"
     />
 </p>
 

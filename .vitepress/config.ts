@@ -18,7 +18,7 @@ export default defineConfig({
   srcExclude: ['**/zh-CN/**', '**/node_modules/**', '**/refactor/**', '**/experiments/**', '**/auth/**', '**/debug/**', '**/diagnostics/**', '**/shad/**', '**/.i18n/**'],
 
   // Head meta
-  head: [["link", { rel: "icon", href: "/assets/edwin-logo.svg" }]],
+  head: [["link", { rel: "icon", href: "/assets/favicon-32x32.png" }]],
 
   // Vite config
   vite: {
@@ -53,7 +53,7 @@ export default defineConfig({
 
   themeConfig: {
     // Logo
-    logo: "/assets/edwin-logo.svg",
+    logo: "/assets/edwin-logo.png",
 
     // Search
     search: {
