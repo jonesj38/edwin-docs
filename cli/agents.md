@@ -51,7 +51,7 @@ edwin agents set-identity --workspace ~/.edwin/workspace --from-identity
 Override fields explicitly:
 
 ```bash
-edwin agents set-identity --agent main --name "Edwin" --emoji "🦞" --avatar avatars/edwin.png
+edwin agents set-identity --agent main --name "Edwin" --emoji "⚡" --avatar avatars/edwin.png
 ```
 
 Config sample:
@@ -65,7 +65,7 @@ Config sample:
         identity: {
           name: "Edwin",
           theme: "personal AI",
-          emoji: "🦞",
+          emoji: "⚡",
           avatar: "avatars/edwin.png",
         },
       },

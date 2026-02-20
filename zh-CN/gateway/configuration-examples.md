@@ -38,7 +38,7 @@ x-i18n:
   identity: {
     name: "Edwin",
     theme: "helpful assistant",
-    emoji: "🦞",
+    emoji: "⚡",
   },
   agent: {
     workspace: "~/.edwin/workspace",

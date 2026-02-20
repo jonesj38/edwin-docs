@@ -58,7 +58,7 @@ edwin agents set-identity --workspace ~/.edwin/workspace --from-identity
 显式覆盖字段：
 
 ```bash
-edwin agents set-identity --agent main --name "Edwin" --emoji "🦞" --avatar avatars/edwin.png
+edwin agents set-identity --agent main --name "Edwin" --emoji "⚡" --avatar avatars/edwin.png
 ```
 
 配置示例：
@@ -72,7 +72,7 @@ edwin agents set-identity --agent main --name "Edwin" --emoji "🦞" --avatar av
         identity: {
           name: "Edwin",
           theme: "personal AI",
-          emoji: "🦞",
+          emoji: "⚡",
           avatar: "avatars/edwin.png",
         },
       },

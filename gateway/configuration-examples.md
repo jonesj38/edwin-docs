@@ -31,7 +31,7 @@ Save to `~/.edwin/edwin.json` and you can DM the bot from that number.
   identity: {
     name: "Edwin",
     theme: "helpful assistant",
-    emoji: "🦞",
+    emoji: "⚡",
   },
   agent: {
     workspace: "~/.edwin/workspace",

@@ -5,7 +5,7 @@ read_when:
 title: "Edwin"
 ---
 
-# Edwin 🦞
+# Edwin ⚡
 
 <p align="center">
     <img
@@ -22,7 +22,7 @@ title: "Edwin"
     />
 </p>
 
-> _"ACTIVATE! ACTIVATE!"_ — A personal AI, probably
+> _Your AI, everywhere._
 
 <p align="center">
   <strong>Any OS gateway for AI agents across WhatsApp, Telegram, Discord, iMessage, and more.</strong><br />

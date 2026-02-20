@@ -739,7 +739,7 @@ edwin gateway restart           # or: edwin gateway
 
 _"Have you tried turning it off and on again?"_ — Every IT person ever
 
-🦞🔧
+⚡🔧
 
 ### Browser Not Starting (Linux)
 

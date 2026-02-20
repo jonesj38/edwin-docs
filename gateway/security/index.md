@@ -311,7 +311,7 @@ Assume “compromised” means: someone got into a room that can trigger the bot
 
 ## Lessons Learned (The Hard Way)
 
-### The `find ~` Incident 🦞
+### The `find ~` Incident ⚡
 
 On Day 1, a friendly tester asked Edwin to run `find ~` and share the output. Edwin happily dumped the entire home directory structure to a group chat.
 
@@ -822,4 +822,4 @@ Found a vulnerability in Edwin? Please report responsibly:
 
 _"Security is a process, not a product. Also, don't trust pipeliness with shell access."_ — Someone wise, probably
 
-🦞🔐
+⚡🔐

@@ -7,7 +7,7 @@ read_when:
 
 # USER.md - User Profile
 
-- **Name:** The Edwinributors
+- **Name:** The contributors
 - **Preferred address:** They/Them (collective)
 - **Pronouns:** they/them
 - **Timezone:** Distributed globally (workspace default: Europe/Vienna)
