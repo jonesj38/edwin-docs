@@ -352,7 +352,7 @@ export default defineConfig({
             { text: "Slash Commands", link: "/tools/slash-commands" },
             { text: "Skills", link: "/tools/skills" },
             { text: "Skills Config", link: "/tools/skills-config" },
-            { text: "EdwinHub", link: "/tools/edwin-skills" },
+            { text: "EdwinHub", link: "/tools/skills-hub" },
             { text: "Plugins", link: "/plugin" },
             { text: "Voice Call", link: "/plugins/voice-call" },
             { text: "Zalo User", link: "/plugins/zalouser" },
@@ -602,7 +602,6 @@ export default defineConfig({
         {
           text: "Other",
           items: [
-            { text: "Credits", link: "/reference/credits" },
             { text: "Session Mgmt & Compaction", link: "/reference/session-management-compaction" },
           ],
         },
