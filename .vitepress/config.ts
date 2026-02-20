@@ -75,7 +75,7 @@ export default defineConfig({
     // Social links
     socialLinks: [
       { icon: "github", link: "https://github.com/jonesj38/edwin" },
-      { icon: "discord", link: "https://discord.gg/clawd" },
+      { icon: "discord", link: "https://discord.gg/edwin" },
     ],
 
     // Footer
@@ -100,7 +100,6 @@ export default defineConfig({
             { text: "Edwin", link: "/" },
             { text: "Features", link: "/concepts/features" },
             { text: "Showcase", link: "/start/showcase" },
-            { text: "Lore", link: "/start/lore" },
           ],
         },
         {
@@ -353,7 +352,7 @@ export default defineConfig({
             { text: "Slash Commands", link: "/tools/slash-commands" },
             { text: "Skills", link: "/tools/skills" },
             { text: "Skills Config", link: "/tools/skills-config" },
-            { text: "EdwinHub", link: "/tools/clawhub" },
+            { text: "EdwinHub", link: "/tools/edwin-skills" },
             { text: "Plugins", link: "/plugin" },
             { text: "Voice Call", link: "/plugins/voice-call" },
             { text: "Zalo User", link: "/plugins/zalouser" },

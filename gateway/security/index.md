@@ -313,7 +313,7 @@ Assume “compromised” means: someone got into a room that can trigger the bot
 
 ### The `find ~` Incident 🦞
 
-On Day 1, a friendly tester asked Clawd to run `find ~` and share the output. Clawd happily dumped the entire home directory structure to a group chat.
+On Day 1, a friendly tester asked Edwin to run `find ~` and share the output. Edwin happily dumped the entire home directory structure to a group chat.
 
 **Lesson:** Even "innocent" requests can leak sensitive info. Directory structures reveal project names, tool configs, and system layout.
 
@@ -797,7 +797,7 @@ Commit the updated `.secrets.baseline` once it reflects the intended state.
 Owner (Peter)
   │ Full trust
   ▼
-AI (Clawd)
+AI (Edwin)
   │ Trust but verify
   ▼
 Friends in allowlist
@@ -820,6 +820,6 @@ Found a vulnerability in Edwin? Please report responsibly:
 
 ---
 
-_"Security is a process, not a product. Also, don't trust lobsters with shell access."_ — Someone wise, probably
+_"Security is a process, not a product. Also, don't trust pipeliness with shell access."_ — Someone wise, probably
 
 🦞🔐

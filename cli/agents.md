@@ -64,7 +64,7 @@ Config sample:
         id: "main",
         identity: {
           name: "Edwin",
-          theme: "space lobster",
+          theme: "personal AI",
           emoji: "🦞",
           avatar: "avatars/edwin.png",
         },

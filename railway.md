@@ -16,7 +16,7 @@ and you configure everything via the `/setup` web wizard.
 
 ## One-click deploy
 
-[Deploy on Railway](https://railway.com/deploy/clawdbot-railway-template)
+[Deploy on Railway](https://railway.com/deploy/edwin-railway-template)
 
 After deploy, find your public URL in **Railway → your service → Settings → Domains**.
 

@@ -17,12 +17,12 @@ agent (with a session switcher for other sessions).
 
 ## Launch & debugging
 
-- Manual: Lobster menu → “Open Chat”.
+- Manual: Pipelines menu → “Open Chat”.
 - Auto‑open for testing:
   ```bash
   dist/Edwin.app/Contents/MacOS/Edwin --webchat
   ```
-- Logs: `./scripts/clawlog.sh` (subsystem `bot.molt`, category `WebChatSwiftUI`).
+- Logs: `./scripts/edwinlog.sh` (subsystem `bot.molt`, category `WebChatSwiftUI`).
 
 ## How it’s wired
 

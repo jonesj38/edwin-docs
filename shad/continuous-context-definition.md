@@ -184,7 +184,7 @@ Redis: Cache subtask results for reuse
 
 ### 4. **Edwin Memory System Integration**
 
-Edwin's vault (`~/clawd/`) can optionally index Shad run history:
+Edwin's vault (`~/edwin/`) can optionally index Shad run history:
 
 ```json5
 {

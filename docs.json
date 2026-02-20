@@ -255,28 +255,28 @@
       "destination": "/nodes/camera"
     },
     {
-      "source": "/clawd",
+      "source": "/edwin",
       "destination": "/start/edwin"
     },
     {
-      "source": "/start/clawd",
+      "source": "/start/edwin",
       "destination": "/start/edwin"
     },
     {
-      "source": "/start/clawd/",
+      "source": "/start/edwin/",
       "destination": "/start/edwin"
     },
     {
-      "source": "/clawhub",
-      "destination": "/tools/clawhub"
+      "source": "/edwin-skills",
+      "destination": "/tools/edwin-skills"
     },
     {
-      "source": "/clawdhub",
-      "destination": "/tools/clawhub"
+      "source": "/edwinhub",
+      "destination": "/tools/edwin-skills"
     },
     {
-      "source": "/tools/clawdhub",
-      "destination": "/tools/clawhub"
+      "source": "/tools/edwinhub",
+      "destination": "/tools/edwin-skills"
     },
     {
       "source": "/configuration",
@@ -387,8 +387,6 @@
       "destination": "/nodes/location-command"
     },
     {
-      "source": "/lore",
-      "destination": "/start/lore"
     },
     {
       "source": "/mac/bun",
@@ -729,7 +727,6 @@
             "groups": [
               {
                 "group": "Overview",
-                "pages": ["index", "concepts/features", "start/showcase", "start/lore"]
               },
               {
                 "group": "Installation",
@@ -891,7 +888,7 @@
                   "tools/slash-commands",
                   "tools/skills",
                   "tools/skills-config",
-                  "tools/clawhub",
+                  "tools/edwin-skills",
                   "plugin",
                   "plugins/voice-call",
                   "plugins/zalouser"
@@ -1167,7 +1164,6 @@
             "groups": [
               {
                 "group": "Overview",
-                "pages": ["zh-CN/index", "zh-CN/start/showcase", "zh-CN/start/lore"]
               },
               {
                 "group": "Installation",
@@ -1331,7 +1327,7 @@
                   "zh-CN/tools/slash-commands",
                   "zh-CN/tools/skills",
                   "zh-CN/tools/skills-config",
-                  "zh-CN/tools/clawhub",
+                  "zh-CN/tools/edwin-skills",
                   "zh-CN/plugin",
                   "zh-CN/plugins/voice-call",
                   "zh-CN/plugins/zalouser"

@@ -1,19 +1,19 @@
 ---
-summary: "ClawHub guide: public skills registry + CLI workflows"
+summary: "Edwin Skills guide: public skills registry + CLI workflows"
 read_when:
-  - Introducing ClawHub to new users
+  - Introducing Edwin Skills to new users
   - Installing, searching, or publishing skills
-  - Explaining ClawHub CLI flags and sync behavior
-title: "ClawHub"
+  - Explaining Edwin Skills CLI flags and sync behavior
+title: "Edwin Skills"
 ---
 
-# ClawHub
+# Edwin Skills
 
-ClawHub is the **public skill registry for Edwin**. It is a free service: all skills are public, open, and visible to everyone for sharing and reuse. A skill is just a folder with a `SKILL.md` file (plus supporting text files). You can browse skills in the web app or use the CLI to search, install, update, and publish skills.
+Edwin Skills is the **public skill registry for Edwin**. It is a free service: all skills are public, open, and visible to everyone for sharing and reuse. A skill is just a folder with a `SKILL.md` file (plus supporting text files). You can browse skills in the web app or use the CLI to search, install, update, and publish skills.
 
-Site: [clawhub.ai](https://clawhub.ai)
+Site: [edwin-skills.ai](https://edwin-skills.ai)
 
-## What ClawHub is
+## What Edwin Skills is
 
 - A public registry for Edwin skills.
 - A versioned store of skill bundles and metadata.
@@ -22,7 +22,7 @@ Site: [clawhub.ai](https://clawhub.ai)
 ## How it works
 
 1. A user publishes a skill bundle (files + metadata).
-2. ClawHub stores the bundle, parses metadata, and assigns a version.
+2. Edwin Skills stores the bundle, parses metadata, and assigns a version.
 3. The registry indexes the skill for search and discovery.
 4. Users browse, download, and install skills in Edwin.
 
@@ -36,7 +36,7 @@ Site: [clawhub.ai](https://clawhub.ai)
 
 ## Who this is for (beginner-friendly)
 
-If you want to add new capabilities to your Edwin agent, ClawHub is the easiest way to find and install skills. You do not need to know how the backend works. You can:
+If you want to add new capabilities to your Edwin agent, Edwin Skills is the easiest way to find and install skills. You do not need to know how the backend works. You can:
 
 - Search for skills by plain language.
 - Install a skill into your workspace.
@@ -47,9 +47,9 @@ If you want to add new capabilities to your Edwin agent, ClawHub is the easiest 
 
 1. Install the CLI (see next section).
 2. Search for something you need:
-   - `clawhub search "calendar"`
+   - `edwin-skills search "calendar"`
 3. Install a skill:
-   - `clawhub install <skill-slug>`
+   - `edwin-skills install <skill-slug>`
 4. Start a new Edwin session so it picks up the new skill.
 
 ## Install the CLI
@@ -57,16 +57,16 @@ If you want to add new capabilities to your Edwin agent, ClawHub is the easiest 
 Pick one:
 
 ```bash
-npm i -g clawhub
+npm i -g edwin-skills
 ```
 
 ```bash
-pnpm add -g clawhub
+pnpm add -g edwin-skills
 ```
 
 ## How it fits into Edwin
 
-By default, the CLI installs skills into `./skills` under your current working directory. If a Edwin workspace is configured, `clawhub` falls back to that workspace unless you override `--workdir` (or `CLAWHUB_WORKDIR`). Edwin loads workspace skills from `<workspace>/skills` and will pick them up in the **next** session. If you already use `~/.edwin/skills` or bundled skills, workspace skills take precedence.
+By default, the CLI installs skills into `./skills` under your current working directory. If a Edwin workspace is configured, `edwin-skills` falls back to that workspace unless you override `--workdir` (or `EDWIN_SKILLS_WORKDIR`). Edwin loads workspace skills from `<workspace>/skills` and will pick them up in the **next** session. If you already use `~/.edwin/skills` or bundled skills, workspace skills take precedence.
 
 For more detail on how skills are loaded, shared, and gated, see
 [Skills](/tools/skills).
@@ -83,7 +83,7 @@ A typical skill includes:
 - Optional configs, scripts, or supporting files used by the skill.
 - Metadata such as tags, summary, and install requirements.
 
-ClawHub uses metadata to power discovery and safely expose skill capabilities.
+Edwin Skills uses metadata to power discovery and safely expose skill capabilities.
 The registry also tracks usage signals (such as stars and downloads) to improve
 ranking and visibility.
 
@@ -99,7 +99,7 @@ ranking and visibility.
 
 ## Security and moderation
 
-ClawHub is open by default. Anyone can upload skills, but a GitHub account must
+Edwin Skills is open by default. Anyone can upload skills, but a GitHub account must
 be at least one week old to publish. This helps slow down abuse without blocking
 legitimate contributors.
 
@@ -128,9 +128,9 @@ Global options (apply to all commands):
 
 Auth:
 
-- `clawhub login` (browser flow) or `clawhub login --token <token>`
-- `clawhub logout`
-- `clawhub whoami`
+- `edwin-skills login` (browser flow) or `edwin-skills login --token <token>`
+- `edwin-skills logout`
+- `edwin-skills whoami`
 
 Options:
 
@@ -140,29 +140,29 @@ Options:
 
 Search:
 
-- `clawhub search "query"`
+- `edwin-skills search "query"`
 - `--limit <n>`: Max results.
 
 Install:
 
-- `clawhub install <slug>`
+- `edwin-skills install <slug>`
 - `--version <version>`: Install a specific version.
 - `--force`: Overwrite if the folder already exists.
 
 Update:
 
-- `clawhub update <slug>`
-- `clawhub update --all`
+- `edwin-skills update <slug>`
+- `edwin-skills update --all`
 - `--version <version>`: Update to a specific version (single slug only).
 - `--force`: Overwrite when local files do not match any published version.
 
 List:
 
-- `clawhub list` (reads `.clawhub/lock.json`)
+- `edwin-skills list` (reads `.edwin-skills/lock.json`)
 
 Publish:
 
-- `clawhub publish <path>`
+- `edwin-skills publish <path>`
 - `--slug <slug>`: Skill slug.
 - `--name <name>`: Display name.
 - `--version <version>`: Semver version.
@@ -171,12 +171,12 @@ Publish:
 
 Delete/undelete (owner/admin only):
 
-- `clawhub delete <slug> --yes`
-- `clawhub undelete <slug> --yes`
+- `edwin-skills delete <slug> --yes`
+- `edwin-skills undelete <slug> --yes`
 
 Sync (scan local skills + publish new/updated):
 
-- `clawhub sync`
+- `edwin-skills sync`
 - `--root <dir...>`: Extra scan roots.
 - `--all`: Upload everything without prompts.
 - `--dry-run`: Show what would be uploaded.
@@ -190,19 +190,19 @@ Sync (scan local skills + publish new/updated):
 ### Search for skills
 
 ```bash
-clawhub search "postgres backups"
+edwin-skills search "postgres backups"
 ```
 
 ### Download new skills
 
 ```bash
-clawhub install my-skill-pack
+edwin-skills install my-skill-pack
 ```
 
 ### Update installed skills
 
 ```bash
-clawhub update --all
+edwin-skills update --all
 ```
 
 ### Back up your skills (publish or sync)
@@ -210,13 +210,13 @@ clawhub update --all
 For a single skill folder:
 
 ```bash
-clawhub publish ./my-skill --slug my-skill --name "My Skill" --version 1.0.0 --tags latest
+edwin-skills publish ./my-skill --slug my-skill --name "My Skill" --version 1.0.0 --tags latest
 ```
 
 To scan and back up many skills at once:
 
 ```bash
-clawhub sync --all
+edwin-skills sync --all
 ```
 
 ## Advanced details (technical)
@@ -233,25 +233,25 @@ Updates compare the local skill contents to registry versions using a content ha
 
 ### Sync scanning and fallback roots
 
-`clawhub sync` scans your current workdir first. If no skills are found, it falls back to known legacy locations (for example `~/edwin/skills` and `~/.edwin/skills`). This is designed to find older skill installs without extra flags.
+`edwin-skills sync` scans your current workdir first. If no skills are found, it falls back to known legacy locations (for example `~/edwin/skills` and `~/.edwin/skills`). This is designed to find older skill installs without extra flags.
 
 ### Storage and lockfile
 
-- Installed skills are recorded in `.clawhub/lock.json` under your workdir.
-- Auth tokens are stored in the ClawHub CLI config file (override via `CLAWHUB_CONFIG_PATH`).
+- Installed skills are recorded in `.edwin-skills/lock.json` under your workdir.
+- Auth tokens are stored in the Edwin Skills CLI config file (override via `EDWIN_SKILLS_CONFIG_PATH`).
 
 ### Telemetry (install counts)
 
-When you run `clawhub sync` while logged in, the CLI sends a minimal snapshot to compute install counts. You can disable this entirely:
+When you run `edwin-skills sync` while logged in, the CLI sends a minimal snapshot to compute install counts. You can disable this entirely:
 
 ```bash
-export CLAWHUB_DISABLE_TELEMETRY=1
+export EDWIN_SKILLS_DISABLE_TELEMETRY=1
 ```
 
 ## Environment variables
 
-- `CLAWHUB_SITE`: Override the site URL.
-- `CLAWHUB_REGISTRY`: Override the registry API URL.
-- `CLAWHUB_CONFIG_PATH`: Override where the CLI stores the token/config.
-- `CLAWHUB_WORKDIR`: Override the default workdir.
-- `CLAWHUB_DISABLE_TELEMETRY=1`: Disable telemetry on `sync`.
+- `EDWIN_SKILLS_SITE`: Override the site URL.
+- `EDWIN_SKILLS_REGISTRY`: Override the registry API URL.
+- `EDWIN_SKILLS_CONFIG_PATH`: Override where the CLI stores the token/config.
+- `EDWIN_SKILLS_WORKDIR`: Override the default workdir.
+- `EDWIN_SKILLS_DISABLE_TELEMETRY=1`: Disable telemetry on `sync`.

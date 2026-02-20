@@ -47,22 +47,22 @@ You can gate them via `metadata.edwin.requires.config` on the plugin’s config
 entry. See [Plugins](/plugin) for discovery/config and [Tools](/tools) for the
 tool surface those skills teach.
 
-## ClawHub (install + sync)
+## Edwin Skills (install + sync)
 
-ClawHub is the public skills registry for Edwin. Browse at
-https://clawhub.com. Use it to discover, install, update, and back up skills.
-Full guide: [ClawHub](/tools/clawhub).
+Edwin Skills is the public skills registry for Edwin. Browse at
+https://skills.edwinpai.com. Use it to discover, install, update, and back up skills.
+Full guide: [Edwin Skills](/tools/edwin-skills).
 
 Common flows:
 
 - Install a skill into your workspace:
-  - `clawhub install <skill-slug>`
+  - `edwin-skills install <skill-slug>`
 - Update all installed skills:
-  - `clawhub update --all`
+  - `edwin-skills update --all`
 - Sync (scan + publish updates):
-  - `clawhub sync --all`
+  - `edwin-skills sync --all`
 
-By default, `clawhub` installs into `./skills` under your current working
+By default, `edwin-skills` installs into `./skills` under your current working
 directory (or falls back to the configured Edwin workspace). Edwin picks
 that up as `<workspace>/skills` on the next session.
 
@@ -295,6 +295,6 @@ See [Skills config](/tools/skills-config) for the full configuration schema.
 
 ## Looking for more skills?
 
-Browse https://clawhub.com.
+Browse https://skills.edwinpai.com.
 
 ---

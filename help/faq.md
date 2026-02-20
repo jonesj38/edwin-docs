@@ -998,7 +998,7 @@ Use managed overrides instead of editing the repo copy. Put your changes in `~/.
 
 ### Can I load skills from a custom folder
 
-Yes. Add extra directories via `skills.load.extraDirs` in `~/.edwin/edwin.json` (lowest precedence). Default precedence remains: `<workspace>/skills` → `~/.edwin/skills` → bundled → `skills.load.extraDirs`. `clawhub` installs into `./skills` by default, which Edwin treats as `<workspace>/skills`.
+Yes. Add extra directories via `skills.load.extraDirs` in `~/.edwin/edwin.json` (lowest precedence). Default precedence remains: `<workspace>/skills` → `~/.edwin/skills` → bundled → `skills.load.extraDirs`. `edwin-skills` installs into `./skills` by default, which Edwin treats as `<workspace>/skills`.
 
 ### How can I use different models for different tasks
 
@@ -1045,17 +1045,17 @@ Docs: [Cron jobs](/automation/cron-jobs), [Cron vs Heartbeat](/automation/cron-v
 
 ### How do I install skills on Linux
 
-Use **ClawHub** (CLI) or drop skills into your workspace. The macOS Skills UI isn't available on Linux.
-Browse skills at https://clawhub.com.
+Use **Edwin Skills** (CLI) or drop skills into your workspace. The macOS Skills UI isn't available on Linux.
+Browse skills at https://skills.edwinpai.com.
 
-Install the ClawHub CLI (pick one package manager):
+Install the Edwin Skills CLI (pick one package manager):
 
 ```bash
-npm i -g clawhub
+npm i -g edwin-skills
 ```
 
 ```bash
-pnpm add -g clawhub
+pnpm add -g edwin-skills
 ```
 
 ### Can Edwin run tasks on a schedule or continuously in the background
@@ -1121,11 +1121,11 @@ targeting those APIs.
 Install skills:
 
 ```bash
-clawhub install <skill-slug>
-clawhub update --all
+edwin-skills install <skill-slug>
+edwin-skills update --all
 ```
 
-ClawHub installs into `./skills` under your current directory (or falls back to your configured Edwin workspace); Edwin treats that as `<workspace>/skills` on the next session. For shared skills across agents, place them in `~/.edwin/skills/<name>/SKILL.md`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills) and [ClawHub](/tools/clawhub).
+Edwin Skills installs into `./skills` under your current directory (or falls back to your configured Edwin workspace); Edwin treats that as `<workspace>/skills` on the next session. For shared skills across agents, place them in `~/.edwin/skills/<name>/SKILL.md`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills) and [Edwin Skills](/tools/edwin-skills).
 
 ### How do I install the Chrome extension for browser takeover
 
@@ -2827,4 +2827,4 @@ You can add options like `debounce:2s cap:25 drop:summarize` for followup modes.
 
 ---
 
-Still stuck? Ask in [Discord](https://discord.com/invite/clawd) or open a [GitHub discussion](https://github.com/jonesj38/edwin/discussions).
+Still stuck? Ask in [Discord](https://discord.com/invite/edwin) or open a [GitHub discussion](https://github.com/jonesj38/edwin/discussions).

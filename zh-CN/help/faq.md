@@ -938,7 +938,7 @@ Edwin 是一个**个人助手**和协调层，不是 IDE 替代品。使用 Clau
 
 ### 可以从自定义文件夹加载 Skills 吗
 
-可以。通过 `~/.edwin/edwin.json` 中的 `skills.load.extraDirs` 添加额外目录（最低优先级）。默认优先级保持不变：`<workspace>/skills` → `~/.edwin/skills` → 内置 → `skills.load.extraDirs`。`clawhub` 默认安装到 `./skills`，Edwin 将其视为 `<workspace>/skills`。
+可以。通过 `~/.edwin/edwin.json` 中的 `skills.load.extraDirs` 添加额外目录（最低优先级）。默认优先级保持不变：`<workspace>/skills` → `~/.edwin/skills` → 内置 → `skills.load.extraDirs`。`edwin-skills` 默认安装到 `./skills`，Edwin 将其视为 `<workspace>/skills`。
 
 ### 如何为不同任务使用不同模型
 
@@ -982,17 +982,17 @@ edwin cron runs --id <jobId> --limit 50
 
 ### 如何在 Linux 上安装 Skills
 
-使用 **ClawHub**（CLI）或将 Skills 放入你的工作区。macOS Skills UI 在 Linux 上不可用。
-浏览 Skills：https://clawhub.com。
+使用 **Edwin Skills**（CLI）或将 Skills 放入你的工作区。macOS Skills UI 在 Linux 上不可用。
+浏览 Skills：https://skills.edwinpai.com。
 
-安装 ClawHub CLI（选择一个包管理器）：
+安装 Edwin Skills CLI（选择一个包管理器）：
 
 ```bash
-npm i -g clawhub
+npm i -g edwin-skills
 ```
 
 ```bash
-pnpm add -g clawhub
+pnpm add -g edwin-skills
 ```
 
 ### Edwin 能否按计划或在后台持续运行任务
@@ -1059,11 +1059,11 @@ pnpm add -g clawhub
 安装 Skills：
 
 ```bash
-clawhub install <skill-slug>
-clawhub update --all
+edwin-skills install <skill-slug>
+edwin-skills update --all
 ```
 
-ClawHub 安装到当前目录下的 `./skills`（或回退到你配置的 Edwin 工作区）；Edwin 在下一个会话中将其视为 `<workspace>/skills`。对于跨智能体共享的 Skills，将它们放在 `~/.edwin/skills/<name>/SKILL.md`。某些 Skills 期望通过 Homebrew 安装二进制文件；在 Linux 上意味着 Linuxbrew（参阅上面的 Homebrew Linux 常见问题条目）。参阅[Skills](/tools/skills)和 [ClawHub](/tools/clawhub)。
+Edwin Skills 安装到当前目录下的 `./skills`（或回退到你配置的 Edwin 工作区）；Edwin 在下一个会话中将其视为 `<workspace>/skills`。对于跨智能体共享的 Skills，将它们放在 `~/.edwin/skills/<name>/SKILL.md`。某些 Skills 期望通过 Homebrew 安装二进制文件；在 Linux 上意味着 Linuxbrew（参阅上面的 Homebrew Linux 常见问题条目）。参阅[Skills](/tools/skills)和 [Edwin Skills](/tools/edwin-skills)。
 
 ### 如何安装用于浏览器接管的 Chrome 扩展
 
@@ -2625,4 +2625,4 @@ Edwin 默认阻止**跨提供商**消息。如果工具调用绑定到 Telegram�
 
 ---
 
-仍然卡住？在 [Discord](https://discord.com/invite/clawd) 中提问或发起 [GitHub 讨论](https://github.com/jonesj38/edwin/discussions)。
+仍然卡住？在 [Discord](https://discord.com/invite/edwin) 中提问或发起 [GitHub 讨论](https://github.com/jonesj38/edwin/discussions)。

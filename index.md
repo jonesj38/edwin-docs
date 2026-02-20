@@ -22,7 +22,7 @@ title: "Edwin"
     />
 </p>
 
-> _"EXFOLIATE! EXFOLIATE!"_ — A space lobster, probably
+> _"ACTIVATE! ACTIVATE!"_ — A personal AI, probably
 
 <p align="center">
   <strong>Any OS gateway for AI agents across WhatsApp, Telegram, Discord, iMessage, and more.</strong><br />

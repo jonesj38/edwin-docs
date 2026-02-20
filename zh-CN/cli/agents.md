@@ -71,7 +71,7 @@ edwin agents set-identity --agent main --name "Edwin" --emoji "🦞" --avatar av
         id: "main",
         identity: {
           name: "Edwin",
-          theme: "space lobster",
+          theme: "personal AI",
           emoji: "🦞",
           avatar: "avatars/edwin.png",
         },

@@ -93,13 +93,13 @@ When building software/projects, use this as the default process unless the huma
 
 ## Backup tip (recommended)
 
-If you treat this workspace as Clawd’s “memory”, make it a git repo (ideally private) so `AGENTS.md` and your memory files are backed up.
+If you treat this workspace as Edwin’s “memory”, make it a git repo (ideally private) so `AGENTS.md` and your memory files are backed up.
 
 ```bash
 cd ~/.edwin/workspace
 git init
 git add AGENTS.md
-git commit -m "Add Clawd workspace"
+git commit -m "Add Edwin workspace"
 # Optional: add a private remote + push
 ```
 

@@ -128,7 +128,7 @@ Exports:  Markdown summaries for vault integration
 │  4. EDWIN MEMORY SYSTEM INTEGRATION                            │
 │     ┌──────────────────────────────────────────┐                 │
 │     │ Vault-Native Context                     │                 │
-│     │ • Export run summaries to ~/clawd/       │                 │
+│     │ • Export run summaries to ~/edwin/       │                 │
 │     │ • Index via memory_search tool            │                 │
 │     │ • Enable agent: "What patterns tried?"   │                 │
 │     │ • Bidirectional: agents ↔ Shad history  │                 │

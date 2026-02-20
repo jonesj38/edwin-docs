@@ -283,8 +283,8 @@ time shad run "Task A" --vault ~/test --context-from <run_id>
    - Metrics: track hit/miss rate (target: ≥ 80% hit)
 
 3. **Edwin Memory Integration**
-   - Export run summaries to Edwin workspace: `~/clawd/shad-runs/`
-   - Configure: `agents.defaults.memorySearch.extraPaths = ["~/clawd/shad-runs"]`
+   - Export run summaries to Edwin workspace: `~/edwin/shad-runs/`
+   - Configure: `agents.defaults.memorySearch.extraPaths = ["~/edwin/shad-runs"]`
    - When agent queries memory (e.g., "What auth patterns have we tried?"), Shad history surfaces
    - Mechanism: Memory tools (`memory_search`, `memory_get`) work on Shad exports like any memory file
 

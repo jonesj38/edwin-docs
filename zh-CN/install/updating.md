@@ -34,7 +34,7 @@ curl -fsSL https://edwinpai.com/install.sh | bash
   ```
   安装程序**仅**在仓库干净时才会执行 `git pull --rebase`。
 - 对于**全局安装**，脚本底层使用 `npm install -g edwin@latest`。
-- 旧版说明：`clawdbot` 仍可作为兼容性垫片使用。
+- 旧版说明：`edwin` 仍可作为兼容性垫片使用。
 
 ## 更新之前
 
@@ -230,4 +230,4 @@ git pull
 
 - 再次运行 `edwin doctor` 并仔细阅读输出（它通常会告诉你修复方法）。
 - 查看：[故障排除](/gateway/troubleshooting)
-- 在 Discord 上提问：https://discord.gg/clawd
+- 在 Discord 上提问：https://discord.gg/edwin

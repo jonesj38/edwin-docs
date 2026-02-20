@@ -1633,14 +1633,14 @@ Notes:
 
 Defaults for Talk mode (macOS/iOS/Android). Voice IDs fall back to `ELEVENLABS_VOICE_ID` or `SAG_VOICE_ID` when unset.
 `apiKey` falls back to `ELEVENLABS_API_KEY` (or the gateway’s shell profile) when unset.
-`voiceAliases` lets Talk directives use friendly names (e.g. `"voice":"Clawd"`).
+`voiceAliases` lets Talk directives use friendly names (e.g. `"voice":"Edwin"`).
 
 ```json5
 {
   talk: {
     voiceId: "elevenlabs_voice_id",
     voiceAliases: {
-      Clawd: "EXAVITQu4vr4xnSDxMaL",
+      Edwin: "EXAVITQu4vr4xnSDxMaL",
       Roger: "CwhRBWXzGAHq8TQ4Fs17",
     },
     modelId: "eleven_v3",
@@ -2882,7 +2882,7 @@ Defaults:
 - evaluateEnabled: `true` (set `false` to disable `act:evaluate` and `wait --fn`)
 - control service: loopback only (port derived from `gateway.port`, default `18791`)
 - CDP URL: `http://127.0.0.1:18792` (control service + 1, legacy single-profile)
-- profile color: `#FF4500` (lobster-orange)
+- profile color: `#FF4500` (pipelines-orange)
 - Note: the control server is started by the running gateway (Edwin.app menubar, or `edwin gateway`).
 - Auto-detect order: default browser if Chromium-based; otherwise Chrome → Brave → Edge → Chromium → Chrome Canary.
 

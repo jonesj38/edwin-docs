@@ -107,7 +107,7 @@ Current npm plugin list (update as needed):
 - @edwin/diagnostics-otel
 - @edwin/discord
 - @edwin/feishu
-- @edwin/lobster
+- @edwin/pipelines
 - @edwin/matrix
 - @edwin/msteams
 - @edwin/nextcloud-talk

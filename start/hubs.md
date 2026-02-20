@@ -163,7 +163,7 @@ Use these hubs to discover every page, including deep dives and reference docs t
 ## Workspace + templates
 
 - [Skills](/tools/skills)
-- [ClawHub](/tools/clawhub)
+- [Edwin Skills](/tools/edwin-skills)
 - [Skills config](/tools/skills-config)
 - [Default AGENTS](/reference/AGENTS.default)
 - [Templates: AGENTS](/reference/templates/AGENTS)

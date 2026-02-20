@@ -70,7 +70,7 @@ This page describes the current CLI behavior. If commands change, update this do
 
 ## Color palette
 
-Edwin uses a lobster palette for CLI output.
+Edwin uses a pipelines palette for CLI output.
 
 - `accent` (#FF5A2D): headings, labels, primary highlights.
 - `accentBright` (#FF7A3D): command names, emphasis.
@@ -81,7 +81,7 @@ Edwin uses a lobster palette for CLI output.
 - `error` (#E23D2D): errors, failures.
 - `muted` (#8B7F77): de-emphasis, metadata.
 
-Palette source of truth: `src/terminal/palette.ts` (aka “lobster seam”).
+Palette source of truth: `src/terminal/palette.ts` (aka “palette seam”).
 
 ## Command tree
 
@@ -436,7 +436,7 @@ Options:
 - `--json`: output JSON (no styling).
 - `-v`, `--verbose`: include missing requirements detail.
 
-Tip: use `npx clawhub` to search, install, and sync skills.
+Tip: use `npx edwin-skills` to search, install, and sync skills.
 
 ### `pairing`
 

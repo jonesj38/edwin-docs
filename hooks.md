@@ -696,7 +696,7 @@ Monitor gateway logs to see hook execution:
 
 ```bash
 # macOS
-./scripts/clawlog.sh -f
+./scripts/edwinlog.sh -f
 
 # Other platforms
 tail -f ~/.edwin/gateway.log
@@ -819,7 +819,7 @@ Look for missing:
 
 3. Check gateway logs for errors:
    ```bash
-   ./scripts/clawlog.sh | grep hook
+   ./scripts/edwinlog.sh | grep hook
    ```
 
 ### Handler Errors
