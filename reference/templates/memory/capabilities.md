@@ -32,7 +32,7 @@ Standing reference for what Edwin can do. Used by recall systems (e.g. shad-cont
 
 ## Memory & Recall
 
-- **Shad** — semantic recall sidecar for searching across vault files
+- **Shad** — semantic recall sidecar for searching across collection files
 - **QMD** — BM25 keyword search across indexed collections
 - **Disk-based memory** — daily notes, contact profiles, task files in memory/
 - **Shad-context plugin** — auto-recall before each turn, auto-capture after each turn

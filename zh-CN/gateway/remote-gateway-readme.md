@@ -1,5 +1,5 @@
 ---
-read_when: Connecting the macOS app to a remote gateway over SSH
+read_when: Connecting the Edwin Desktop to a remote gateway over SSH
 summary: Edwin.app 连接远程 Gateway 网关的 SSH 隧道设置
 title: 远程 Gateway 网关设置
 x-i18n:

@@ -162,7 +162,7 @@ See also: [Presence](/concepts/presence) for how presence is produced/deduped an
 
 - WebChat is a native SwiftUI UI that talks directly to the Gateway WebSocket for history, sends, abort, and events.
 - Remote use goes through the same SSH/Tailscale tunnel; if a gateway token is configured, the client includes it during `connect`.
-- macOS app connects via a single WS (shared connection); it hydrates presence from the initial snapshot and listens for `presence` events to update the UI.
+- Edwin Desktop connects via a single WS (shared connection); it hydrates presence from the initial snapshot and listens for `presence` events to update the UI.
 
 ## Typing and validation
 

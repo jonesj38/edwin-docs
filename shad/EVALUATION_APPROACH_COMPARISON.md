@@ -27,10 +27,10 @@
 
 - **Precision diagnosis**: Identify _exactly_ which query/node failed and why
 - **Anomaly detection**: Spot outliers (single slow query vs. systematic slowdown)
-- **Root cause analysis**: Correlate failures with specific context, task complexity, vault state
+- **Root cause analysis**: Correlate failures with specific context, task complexity, collection state
 - **Learning signal**: Feed into adaptive heuristics (e.g., query rewriting, cache warming)
 - **Reproducibility**: Can replay exact sequence that caused failure
-- **Temporal granularity**: Catch transient spikes (e.g., cache miss during vault sync)
+- **Temporal granularity**: Catch transient spikes (e.g., cache miss during collection sync)
 
 #### Cons
 
@@ -51,7 +51,7 @@
 ✅ **Good for**:
 
 - Query precision fell from 0.85→0.62 between sessions; trace which queries regressed
-- Latency spike in one session; identify if specific vault source caused slowdown
+- Latency spike in one session; identify if specific collection source caused slowdown
 - Type error in output; trace which retrieval gave bad context
 
 ❌ **Not ideal for**:
@@ -71,7 +71,7 @@
 - **Simplicity**: Single metrics report (precision, latency, etc.) easy to understand
 - **Efficiency**: No log explosion; storage & processing minimal
 - **Privacy**: Only aggregate statistics exposed; individual queries hidden
-- **Actionability**: "Precision dropped to 0.62" immediately suggests vault gap
+- **Actionability**: "Precision dropped to 0.62" immediately suggests collection gap
 - **Comparison**: Easy to compare session A vs session B
 - **Sampling friendly**: Can evaluate on subset of important sessions
 
@@ -101,7 +101,7 @@
 
 - Debugging a specific failure ("Which query gave bad context?")
 - Identifying query-specific patterns (e.g., do complex questions retrieve poorly?)
-- Correlating with vault changes (need granular timestamps)
+- Correlating with collection changes (need granular timestamps)
 
 ---
 
@@ -180,9 +180,9 @@
   → Trigger fallback, escalate to human if all 3 tiers fail
 
 ⚠️ HIGH: Precision@10 dropped to 0.42 (was 0.82 in prior 5 queries)
-  → Likely vault corruption; verify cache, check shadow index
+  → Likely collection corruption; verify cache, check shadow index
 
-💡 MEDIUM: p99 latency 3.2s (usually 1.8s), likely vault sync in progress
+💡 MEDIUM: p99 latency 3.2s (usually 1.8s), likely collection sync in progress
   → Suggest deferring queries until sync completes
 ```
 
@@ -227,7 +227,7 @@
    - Compare to rolling 7-day baseline
    - Generate report, send to Slack
 4. Engineer reviews report next morning
-5. If problem found, adds context to vault or debugs query rewriting
+5. If problem found, adds context to collection or debugs query rewriting
 ```
 
 ---
@@ -263,7 +263,7 @@ daily_job.generate_report()     # Send detailed analysis
 | Metric | Real-Time? | Reason |
 |--------|-----------|--------|
 | Empty result set (0 docs) | ✅ Yes | Definitive failure |
-| Latency spike (p99 >5s) | ❌ No | Could be transient (vault sync, network) |
+| Latency spike (p99 >5s) | ❌ No | Could be transient (collection sync, network) |
 | Low precision (<0.30) | ❌ No | Requires human annotation to confirm |
 | Type error in output | ✅ Yes | Parser fails = definitive |
 | Merge conflict markers | ✅ Yes | Code syntax is checkable |
@@ -427,7 +427,7 @@ for session in sample(all_sessions, k=0.10):  # Review 10% of sessions
 
 #### Cons
 
-- **High false positives**: Cold-start latency spike, first session in vault always triggers
+- **High false positives**: Cold-start latency spike, first session in collection always triggers
 - **No context**: "Precision=0.62" flagged as bad, but what if task inherently hard?
 - **Task-specific variation**: ML task needs lower precision threshold than authz task
 - **Brittleness**: Off-by-one-percentile (threshold=0.60, actual=0.59) triggers alert
@@ -456,7 +456,7 @@ MEDIUM:
   - Strategy drift >0.20
 ```
 
-**Problem**: What if vault small & retrieval inherently slow? Threshold feels arbitrary.
+**Problem**: What if collection small & retrieval inherently slow? Threshold feels arbitrary.
 
 ---
 
@@ -466,10 +466,10 @@ MEDIUM:
 
 #### Pros
 
-- **Adaptive**: Baseline automatically captures task/vault characteristics
+- **Adaptive**: Baseline automatically captures task/collection characteristics
 - **No false positives from cold-start**: First session doesn't alert (no history yet)
 - **Catches creeping problems**: Precision 0.85→0.83→0.81→0.79 → alert (degradation trend)
-- **Task-aware**: Different vaults/tasks have different baselines (auto-adapted)
+- **Task-aware**: Different collections/tasks have different baselines (auto-adapted)
 - **Signal degradation**: Can distinguish "bad" from "catastrophic" (below 2σ vs. 5σ)
 - **Requires no threshold tuning**: Just compute rolling mean + stdev
 - **Recoverable**: Can detect when metric improves (trend reverses)
@@ -502,12 +502,12 @@ z_score = (current_precision - mean) / stdev = -9.3σ
 
 #### Building Baseline
 
-| Approach                       | Pros                    | Cons                           |
-| ------------------------------ | ----------------------- | ------------------------------ |
-| **Fixed window** (last 7 days) | Responsive to changes   | Unstable if recent degradation |
-| **Exponential moving avg**     | Smooth, responsive      | Complex to tune decay          |
-| **Stratified by task type**    | Fair comparison         | Requires task labeling         |
-| **Per-vault baseline**         | Accounts for vault size | More state to manage           |
+| Approach                       | Pros                         | Cons                           |
+| ------------------------------ | ---------------------------- | ------------------------------ |
+| **Fixed window** (last 7 days) | Responsive to changes        | Unstable if recent degradation |
+| **Exponential moving avg**     | Smooth, responsive           | Complex to tune decay          |
+| **Stratified by task type**    | Fair comparison              | Requires task labeling         |
+| **Per-collection baseline**    | Accounts for collection size | More state to manage           |
 
 ---
 
@@ -541,15 +541,15 @@ elif current_latency_p99 > 5000:  # 5 seconds, only alert on first day
 
 **Alert Matrix**:
 
-| Condition                     | Type      | Severity | Action                |
-| ----------------------------- | --------- | -------- | --------------------- |
-| Empty results (0 docs)        | Threshold | CRITICAL | Escalate immediately  |
-| Has merge conflict            | Threshold | CRITICAL | Halt execution        |
-| Type error                    | Threshold | CRITICAL | Halt execution        |
-| Precision <2σ of baseline     | Trend     | HIGH     | Flag, review tomorrow |
-| p99 latency >2.5σ of baseline | Trend     | MEDIUM   | Investigate, monitor  |
-| p99 latency >5s absolute      | Threshold | MEDIUM   | Check system health   |
-| Stale doc rate >50%           | Threshold | MEDIUM   | Suggest vault refresh |
+| Condition                     | Type      | Severity | Action                     |
+| ----------------------------- | --------- | -------- | -------------------------- |
+| Empty results (0 docs)        | Threshold | CRITICAL | Escalate immediately       |
+| Has merge conflict            | Threshold | CRITICAL | Halt execution             |
+| Type error                    | Threshold | CRITICAL | Halt execution             |
+| Precision <2σ of baseline     | Trend     | HIGH     | Flag, review tomorrow      |
+| p99 latency >2.5σ of baseline | Trend     | MEDIUM   | Investigate, monitor       |
+| p99 latency >5s absolute      | Threshold | MEDIUM   | Check system health        |
+| Stale doc rate >50%           | Threshold | MEDIUM   | Suggest collection refresh |
 
 **Rationale**:
 

@@ -12,7 +12,7 @@ Last updated: 2026-01-10
 TypeBox is a TypeScript-first schema library. We use it to define the **Gateway
 WebSocket protocol** (handshake, request/response, server events). Those schemas
 drive **runtime validation**, **JSON Schema export**, and **Swift codegen** for
-the macOS app. One source of truth; everything else is generated.
+the Edwin Desktop. One source of truth; everything else is generated.
 
 If you want the higher-level protocol context, start with
 [Gateway architecture](/concepts/architecture).
@@ -60,7 +60,7 @@ Authoritative list lives in `src/gateway/server.ts` (`METHODS`, `EVENTS`).
 - Server handshake + method dispatch: `src/gateway/server.ts`
 - Node client: `src/gateway/client.ts`
 - Generated JSON Schema: `dist/protocol.schema.json`
-- Generated Swift models: `apps/macos/Sources/EdwinProtocol/GatewayModels.swift`
+- Generated Swift models: `edwin-desktop/macos/Sources/EdwinProtocol/GatewayModels.swift`
 
 ## Current pipeline
 

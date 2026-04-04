@@ -13,7 +13,7 @@ Last updated: 2026-01-22
 
 - A single long‑lived **Gateway** owns all messaging surfaces (WhatsApp via
   Baileys, Telegram via grammY, Slack, Discord, Signal, iMessage, WebChat).
-- Control-plane clients (macOS app, CLI, web UI, automations) connect to the
+- Control-plane clients (Edwin Desktop, CLI, web UI, automations) connect to the
   Gateway over **WebSocket** on the configured bind host (default
   `127.0.0.1:18789`).
 - **Nodes** (macOS/iOS/Android/headless) also connect over **WebSocket**, but

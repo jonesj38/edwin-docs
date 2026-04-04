@@ -8,7 +8,7 @@ title: "Skills"
 
 # Skills (macOS)
 
-The macOS app surfaces Edwin skills via the gateway; it does not parse skills locally.
+The Edwin Desktop surfaces Edwin skills via the gateway; it does not parse skills locally.
 
 ## Data source
 

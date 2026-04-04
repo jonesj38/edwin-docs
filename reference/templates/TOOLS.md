@@ -12,19 +12,19 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 
 ## Shad - Memory Retrieval Sidecar
 
-**When to use:** Semantic search across the vault — finding past work, decisions, context when you don't know which file it's in.
+**When to use:** Semantic search across the collection — finding past work, decisions, context when you don't know which file it's in.
 
 **Why:** Keeps your session context lean. Shad does retrieval + synthesis in isolated calls, only the answer comes back.
 
 ```bash
 # Fast recall (6-12s) - use for most memory lookups
-~/.shad/bin/shad run "query" --vault ~/workspace --no-code-mode -O sonnet
+~/.shad/bin/shad run "query" --collection ~/workspace --no-code-mode -O sonnet
 
 # Quick search (raw results, no synthesis)
-~/.shad/bin/shad search "query" --vault ~/workspace
+~/.shad/bin/shad search "query" --collection ~/workspace
 
 # Full research (minutes) - complex synthesis tasks
-~/.shad/bin/shad run "task" --vault ~/workspace -O opus -W sonnet -L sonnet
+~/.shad/bin/shad run "task" --collection ~/workspace -O opus -W sonnet -L sonnet
 
 # BM25 search (fast, no embeddings needed) - use when vector search fails
 qmd search "query" --collection workspace --limit 10
@@ -42,13 +42,13 @@ qmd search "query" --collection workspace --limit 10
 
 **Use direct `read` when you know which file you need:**
 
-| Task            | Approach                        |
-| --------------- | ------------------------------- |
-| Today's notes   | `read memory/YYYY-MM-DD.md`     |
-| Your identity   | `read memory/identity-full.md`  |
-| User's profile  | `read memory/user-profile.md`   |
-| Workspace rules | `read memory/workspace-guide.md`|
-| Specific topic  | `read memory/<topic>.md`        |
+| Task            | Approach                         |
+| --------------- | -------------------------------- |
+| Today's notes   | `read memory/YYYY-MM-DD.md`      |
+| Your identity   | `read memory/identity-full.md`   |
+| User's profile  | `read memory/user-profile.md`    |
+| Workspace rules | `read memory/workspace-guide.md` |
+| Specific topic  | `read memory/<topic>.md`         |
 
 **Use Shad when:**
 
@@ -86,7 +86,7 @@ Things like:
 - Preferred voices for TTS
 - Speaker/room names
 - Device nicknames
-- Vault paths and QMD collection names
+- Collection paths and QMD collection names
 - Anything environment-specific
 
 ---

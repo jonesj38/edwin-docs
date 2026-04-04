@@ -233,7 +233,7 @@ Logs live under `/tmp/edwin/` (default: `edwin-YYYY-MM-DD.log`).
 - WebChat: [WebChat](/web/webchat)
 - Gateway ops: [Gateway runbook](/gateway)
 - Cron + wakeups: [Cron jobs](/automation/cron-jobs)
-- macOS menu bar companion: [Edwin macOS app](/platforms/macos)
+- macOS desktop companion: [Edwin Edwin Desktop](/platforms/macos)
 - iOS node app: [iOS app](/platforms/ios)
 - Android node app: [Android app](/platforms/android)
 - Windows status: [Windows (WSL2)](/platforms/windows)

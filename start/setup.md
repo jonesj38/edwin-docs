@@ -13,8 +13,8 @@ Last updated: 2026-01-01
 ## TL;DR
 
 - **Tailoring lives outside the repo:** `~/.edwin/workspace` (workspace) + `~/.edwin/edwin.json` (config).
-- **Stable workflow:** install the macOS app; let it run the bundled Gateway.
-- **Bleeding edge workflow:** run the Gateway yourself via `pnpm gateway:watch`, then let the macOS app attach in Local mode.
+- **Stable workflow:** install the Edwin Desktop; let it run the bundled Gateway.
+- **Bleeding edge workflow:** run the Gateway yourself via `pnpm gateway:watch`, then let the Edwin Desktop attach in Local mode.
 
 ## Prereqs (from source)
 
@@ -43,7 +43,7 @@ edwin setup
 
 If you don’t have a global install yet, run it via `pnpm edwin setup`.
 
-## Stable workflow (macOS app first)
+## Stable workflow (Edwin Desktop first)
 
 1. Install + launch **Edwin.app** (menu bar).
 2. Complete the onboarding/permissions checklist (TCC prompts).
@@ -66,11 +66,11 @@ If onboarding is not available in your build:
 
 ## Bleeding edge workflow (Gateway in a terminal)
 
-Goal: work on the TypeScript Gateway, get hot reload, keep the macOS app UI attached.
+Goal: work on the TypeScript Gateway, get hot reload, keep the Edwin Desktop UI attached.
 
-### 0) (Optional) Run the macOS app from source too
+### 0) (Optional) Run the Edwin Desktop from source too
 
-If you also want the macOS app on the bleeding edge:
+If you also want the Edwin Desktop on the bleeding edge:
 
 ```bash
 ./scripts/restart-mac.sh
@@ -85,7 +85,7 @@ pnpm gateway:watch
 
 `gateway:watch` runs the gateway in watch mode and reloads on TypeScript changes.
 
-### 2) Point the macOS app at your running Gateway
+### 2) Point the Edwin Desktop at your running Gateway
 
 In **Edwin.app**:
 
@@ -146,4 +146,4 @@ user service (no lingering needed). See [Gateway runbook](/gateway) for the syst
 - [Gateway configuration](/gateway/configuration) (config schema + examples)
 - [Discord](/channels/discord) and [Telegram](/channels/telegram) (reply tags + replyToMode settings)
 - [Edwin assistant setup](/start/edwin)
-- [macOS app](/platforms/macos) (gateway lifecycle)
+- [Edwin Desktop](/platforms/macos) (gateway lifecycle)

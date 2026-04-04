@@ -154,7 +154,7 @@ edwin hooks enable session-memory
 
 **After enabling:**
 
-- Restart the gateway so hooks reload (menu bar app restart on macOS, or restart your gateway process in dev).
+- Restart the gateway so hooks reload (Edwin Desktop app restart on macOS, or restart your gateway process in dev).
 
 ## Disable a Hook
 

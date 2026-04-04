@@ -53,7 +53,7 @@ Enable Shad to maintain persistent, retrievable, and actionable context across i
 
 ```bash
 # Test 1: Persistence
-shad run "Build REST API with authentication" --vault ~/test
+shad run "Build REST API with authentication" --collection ~/test
 ls ~/.shad/history/*/manifest.json  # Should exist
 
 # Test 2: Keyword retrieval
@@ -61,7 +61,7 @@ shad search "authentication" --history  # Should find the auth run
 shad search "REST API" --history       # Should also find it
 
 # Test 3: CLI integration
-shad run "New auth task" --vault ~/test --show-context-sources
+shad run "New auth task" --collection ~/test --show-context-sources
 # Output should list the prior auth runs
 
 # Test 4: Latency
@@ -77,7 +77,7 @@ time shad search "random query" --history  # < 1 second
 ### Deliverables
 
 - ✅ QMD hybrid search (BM25 + vector embeddings) over run history
-- ✅ Session summaries exported to vault in markdown format
+- ✅ Session summaries exported to collection in markdown format
 - ✅ Refined context injection: pre-run only (strategy skeleton primed)
 - ✅ Monitoring: latency + precision logging
 
@@ -154,11 +154,11 @@ shad search "authentication pattern" --history --mode hybrid
 # Should return runs about auth, not just keyword matches
 
 # Test 3: Session summary generation
-shad run "Build API" --vault ~/test
+shad run "Build API" --collection ~/test
 ls ~/.shad/history/summaries/*.md  # Should exist
 
 # Test 4: Pre-run context injection
-shad run "New auth endpoint" --vault ~/test --verbose
+shad run "New auth endpoint" --collection ~/test --verbose
 # Output should show: "Consulting prior runs: run-123 (0.89), run-456 (0.75)"
 
 # Test 5: Latency under load
@@ -219,15 +219,15 @@ for i in {1..10}; do time shad search "query $i" --history; done
 
 ```bash
 # Test 1: Mid-run context injection
-shad run "Build API with auth" --vault ~/test --verbose
+shad run "Build API with auth" --collection ~/test --verbose
 # Output should show decomposition refinement points: "Incorporating prior patterns..."
 
 # Test 2: Confidence boosting
-shad run "New auth endpoint" --vault ~/test --show-confidence
+shad run "New auth endpoint" --collection ~/test --show-confidence
 # Output: confidence scores with boost reasons (e.g., "1.2x from prior OAuth success")
 
 # Test 3: Subtask deduplication
-shad run "Rebuild API (same structure)" --vault ~/test --show-reused
+shad run "Rebuild API (same structure)" --collection ~/test --show-reused
 # Should show: "Reused 2 subtasks from run-X, saved 3.5 min"
 
 # Test 4: Verification trending
@@ -235,8 +235,8 @@ shad dashboard  # metrics view
 # Should show pass rate trend for OAuth subtask type (is it stable? improving?)
 
 # Test 5: No regression
-time shad run "Task A" --vault ~/test
-time shad run "Task A" --vault ~/test --context-from <run_id>
+time shad run "Task A" --collection ~/test
+time shad run "Task A" --collection ~/test --context-from <run_id>
 # 2nd should be ≤ 1st (context overhead < 1%)
 ```
 
@@ -283,8 +283,8 @@ time shad run "Task A" --vault ~/test --context-from <run_id>
    - Metrics: track hit/miss rate (target: ≥ 80% hit)
 
 3. **Edwin Memory Integration**
-   - Export run summaries to Edwin workspace: `~/edwin/shad-runs/`
-   - Configure: `agents.defaults.memorySearch.extraPaths = ["~/edwin/shad-runs"]`
+   - Export run summaries to Edwin workspace: `~/clawd/shad-runs/`
+   - Configure: `agents.defaults.memorySearch.extraPaths = ["~/clawd/shad-runs"]`
    - When agent queries memory (e.g., "What auth patterns have we tried?"), Shad history surfaces
    - Mechanism: Memory tools (`memory_search`, `memory_get`) work on Shad exports like any memory file
 
@@ -393,7 +393,7 @@ shad search "auth" --history --show-scores
 # Recent runs (< 1 week) should have 2x higher scores than old ones
 
 # Test 2: Cross-domain transfer
-# Create vault with: Project A (auth), Project B (payments)
+# Create collection with: Project A (auth), Project B (payments)
 # Retrieve: "payments pattern" should find auth pattern if it's similar
 shad search "secure payment handling" --history
 # Should suggest: "OAuth tokenization from Project A could apply"
@@ -403,8 +403,8 @@ open http://localhost:8000/dashboard/context-continuity
 # Should show timeline, heatmap, trends, real-time metrics
 
 # Test 4: A/B validation (5 cold, 5 warm)
-time shad run "Build user service (cold)" --vault ~/test --no-context
-time shad run "Build user service (warm)" --vault ~/test --context-from prior
+time shad run "Build user service (cold)" --collection ~/test --no-context
+time shad run "Build user service (warm)" --collection ~/test --context-from prior
 # Warm should be 15% faster on average
 
 # Test 5: User feedback collection

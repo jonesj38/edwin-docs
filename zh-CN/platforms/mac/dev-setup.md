@@ -42,7 +42,7 @@ pnpm install
 如果你没有 Apple Developer ID 证书，脚本将自动使用 **ad-hoc 签名**（`-`）。
 
 有关开发运行模式、签名标志和 Team ID 故障排除，请参阅 macOS 应用 README：
-https://github.com/jonesj38/edwin/blob/main/apps/macos/README.md
+https://github.com/jonesj38/edwin-desktop/blob/main/macos/README.md
 
 > **注意**：Ad-hoc 签名的应用可能会触发安全提示。如果应用立即崩溃并显示"Abort trap 6"，请参阅[故障排除](#troubleshooting)部分。
 

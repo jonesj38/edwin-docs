@@ -1,14 +1,14 @@
 ---
 summary: "Edwin macOS companion app (menu bar + gateway broker)"
 read_when:
-  - Implementing macOS app features
+  - Implementing Edwin Desktop features
   - Changing gateway lifecycle or node bridging on macOS
 title: "macOS App"
 ---
 
 # Edwin macOS Companion (menu bar + gateway broker)
 
-The macOS app is the **menu‑bar companion** for Edwin. It owns permissions,
+The Edwin Desktop is the **menu‑bar companion** for Edwin. It owns permissions,
 manages/attaches to the Gateway locally (launchd or manual), and exposes macOS
 capabilities to the agent as a node.
 
@@ -49,7 +49,7 @@ If the LaunchAgent isn’t installed, enable it from the app or run
 
 ## Node capabilities (mac)
 
-The macOS app presents itself as a node. Common commands:
+The Edwin Desktop presents itself as a node. Common commands:
 
 - Canvas: `canvas.present`, `canvas.navigate`, `canvas.eval`, `canvas.snapshot`, `canvas.a2ui.*`
 - Camera: `camera.snap`, `camera.clip`
@@ -61,7 +61,7 @@ The node reports a `permissions` map so agents can decide what’s allowed.
 Node service + app IPC:
 
 - When the headless node host service is running (remote mode), it connects to the Gateway WS as a node.
-- `system.run` executes in the macOS app (UI/TCC context) over a local Unix socket; prompts + output stay in-app.
+- `system.run` executes in the Edwin Desktop (UI/TCC context) over a local Unix socket; prompts + output stay in-app.
 
 Diagram (SCI):
 
@@ -74,7 +74,7 @@ Gateway -> Node Service (WS)
 
 ## Exec approvals (system.run)
 
-`system.run` is controlled by **Exec approvals** in the macOS app (Settings → Exec approvals).
+`system.run` is controlled by **Exec approvals** in the Edwin Desktop (Settings → Exec approvals).
 Security + ask + allowlist are stored locally on the Mac in:
 
 ```
@@ -141,17 +141,17 @@ Safety:
 
 ## Build & dev workflow (native)
 
-- `cd apps/macos && swift build`
+- `cd edwin-desktop/macos && swift build`
 - `swift run Edwin` (or Xcode)
 - Package app: `scripts/package-mac-app.sh`
 
 ## Debug gateway connectivity (macOS CLI)
 
 Use the debug CLI to exercise the same Gateway WebSocket handshake and discovery
-logic that the macOS app uses, without launching the app.
+logic that the Edwin Desktop uses, without launching the app.
 
 ```bash
-cd apps/macos
+cd edwin-desktop/macos
 swift run edwin-mac connect --json
 swift run edwin-mac discover --timeout 3000 --json
 ```
@@ -171,12 +171,12 @@ Discovery options:
 - `--json`: structured output for diffing
 
 Tip: compare against `edwin gateway discover --json` to see whether the
-macOS app’s discovery pipeline (NWBrowser + tailnet DNS‑SD fallback) differs from
+Edwin Desktop’s discovery pipeline (NWBrowser + tailnet DNS‑SD fallback) differs from
 the Node CLI’s `dns-sd` based discovery.
 
 ## Remote connection plumbing (SSH tunnels)
 
-When the macOS app runs in **Remote** mode, it opens an SSH tunnel so local UI
+When the Edwin Desktop runs in **Remote** mode, it opens an SSH tunnel so local UI
 components can talk to a remote Gateway as if it were on localhost.
 
 ### Control tunnel (Gateway WebSocket port)

@@ -140,7 +140,7 @@ open 'edwin://agent?message=Hello%20from%20deep%20link'
 
 ## 构建和开发工作流程（原生）
 
-- `cd apps/macos && swift build`
+- `cd edwin-desktop/macos && swift build`
 - `swift run Edwin`（或 Xcode）
 - 打包应用：`scripts/package-mac-app.sh`
 
@@ -149,7 +149,7 @@ open 'edwin://agent?message=Hello%20from%20deep%20link'
 使用调试 CLI 来执行与 macOS 应用使用的相同的 Gateway 网关 WebSocket 握手和发现逻辑，而无需启动应用。
 
 ```bash
-cd apps/macos
+cd edwin-desktop/macos
 swift run edwin-mac connect --json
 swift run edwin-mac discover --timeout 3000 --json
 ```

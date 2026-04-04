@@ -202,7 +202,7 @@ Health probes: `edwin health` (or `edwin status --deep`) asks the running gatewa
 
 ## Next steps (optional, but great)
 
-- macOS menu bar app + voice wake: [macOS app](/platforms/macos)
+- macOS Edwin Desktop app + voice wake: [Edwin Desktop](/platforms/macos)
 - iOS/Android nodes (Canvas/camera/voice): [Nodes](/nodes)
 - Remote access (SSH tunnel / Tailscale Serve): [Remote access](/gateway/remote) and [Tailscale](/gateway/tailscale)
 - Always-on / VPN setups: [Remote access](/gateway/remote), [exe.dev](/platforms/exe-dev), [Hetzner](/platforms/hetzner), [macOS remote](/platforms/mac/remote)

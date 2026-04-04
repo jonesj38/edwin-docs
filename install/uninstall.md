@@ -64,7 +64,7 @@ pnpm remove -g edwin
 bun remove -g edwin
 ```
 
-6. If you installed the macOS app:
+6. If you installed the Edwin Desktop:
 
 ```bash
 rm -rf /Applications/Edwin.app

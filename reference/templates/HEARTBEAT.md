@@ -57,6 +57,8 @@ Good: "User (Alice, +1234567890) reported that their scheduled message to Bob di
 
 - Update contact/profile files if new info learned
 - Update topic files if decisions were made or status changed
+- **Per-peer privacy:** Write private conversation details to `memory/peers/<name>/`,
+  NOT to shared daily notes. See AGENTS.md for full privacy rules.
 
 ### Index
 
@@ -95,7 +97,7 @@ When responding to messages or doing tasks AFTER a compaction, always pull conte
 
 ```bash
 # Semantic recall
-~/.shad/bin/shad recall "query about the topic" --vault ~/workspace -m sonnet
+~/.shad/bin/shad recall "query about the topic" --collection ~/workspace -m sonnet
 
 # BM25 search
 qmd search "query" --collection workspace --limit 10

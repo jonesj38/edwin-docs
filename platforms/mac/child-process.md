@@ -7,7 +7,7 @@ title: "Gateway Lifecycle"
 
 # Gateway lifecycle on macOS
 
-The macOS app **manages the Gateway via launchd** by default and does not spawn
+The Edwin Desktop **manages the Gateway via launchd** by default and does not spawn
 the Gateway as a child process. It first tries to attach to an already‑running
 Gateway on the configured port; if none is reachable, it enables the launchd
 service via the external `edwin` CLI (no embedded runtime). This gives you
@@ -49,7 +49,7 @@ rm ~/.edwin/disable-launchagent
 
 ## Attach-only mode
 
-To force the macOS app to **never install or manage launchd**, launch it with
+To force the Edwin Desktop to **never install or manage launchd**, launch it with
 `--attach-only` (or `--no-launchd`). This sets `~/.edwin/disable-launchagent`,
 so the app only attaches to an already running Gateway. You can toggle the same
 behavior in Debug Settings.

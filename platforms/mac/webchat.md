@@ -5,9 +5,9 @@ read_when:
 title: "WebChat"
 ---
 
-# WebChat (macOS app)
+# WebChat (Edwin Desktop)
 
-The macOS menu bar app embeds the WebChat UI as a native SwiftUI view. It
+The macOS Edwin Desktop app embeds the WebChat UI as a native SwiftUI view. It
 connects to the Gateway and defaults to the **main session** for the selected
 agent (with a session switcher for other sessions).
 
@@ -17,12 +17,12 @@ agent (with a session switcher for other sessions).
 
 ## Launch & debugging
 
-- Manual: Pipelines menu → “Open Chat”.
+- Manual: Lobster menu → “Open Chat”.
 - Auto‑open for testing:
   ```bash
   dist/Edwin.app/Contents/MacOS/Edwin --webchat
   ```
-- Logs: `./scripts/edwinlog.sh` (subsystem `bot.molt`, category `WebChatSwiftUI`).
+- Logs: `./scripts/clawlog.sh` (subsystem `bot.molt`, category `WebChatSwiftUI`).
 
 ## How it’s wired
 

@@ -2,7 +2,7 @@
 summary: "macOS permission persistence (TCC) and signing requirements"
 read_when:
   - Debugging missing or stuck macOS permission prompts
-  - Packaging or signing the macOS app
+  - Packaging or signing the Edwin Desktop
   - Changing bundle IDs or app install paths
 title: "macOS Permissions"
 ---

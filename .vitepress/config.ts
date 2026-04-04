@@ -15,10 +15,20 @@ export default defineConfig({
   ignoreDeadLinks: true,
 
   // Exclude directories that shouldn't be processed
-  srcExclude: ['**/zh-CN/**', '**/node_modules/**', '**/refactor/**', '**/experiments/**', '**/auth/**', '**/debug/**', '**/diagnostics/**', '**/shad/**', '**/.i18n/**'],
+  srcExclude: [
+    "**/zh-CN/**",
+    "**/node_modules/**",
+    "**/refactor/**",
+    "**/experiments/**",
+    "**/auth/**",
+    "**/debug/**",
+    "**/diagnostics/**",
+    "**/shad/**",
+    "**/.i18n/**",
+  ],
 
   // Head meta
-  head: [["link", { rel: "icon", href: "/assets/favicon-32x32.png" }]],
+  head: [["link", { rel: "icon", href: "/assets/edwin-logo.svg" }]],
 
   // Vite config
   vite: {
@@ -53,7 +63,7 @@ export default defineConfig({
 
   themeConfig: {
     // Logo
-    logo: "/assets/edwin-logo.png",
+    logo: "/assets/edwin-logo.svg",
 
     // Search
     search: {
@@ -75,7 +85,7 @@ export default defineConfig({
     // Social links
     socialLinks: [
       { icon: "github", link: "https://github.com/jonesj38/edwin" },
-      { icon: "discord", link: "https://discord.gg/edwin" },
+      { icon: "discord", link: "https://discord.gg/clawd" },
     ],
 
     // Footer
@@ -100,6 +110,7 @@ export default defineConfig({
             { text: "Edwin", link: "/" },
             { text: "Features", link: "/concepts/features" },
             { text: "Showcase", link: "/start/showcase" },
+            { text: "Lore", link: "/start/lore" },
           ],
         },
         {
@@ -352,7 +363,7 @@ export default defineConfig({
             { text: "Slash Commands", link: "/tools/slash-commands" },
             { text: "Skills", link: "/tools/skills" },
             { text: "Skills Config", link: "/tools/skills-config" },
-            { text: "EdwinHub", link: "/tools/skills-hub" },
+            { text: "EdwinHub", link: "/tools/clawhub" },
             { text: "Plugins", link: "/plugin" },
             { text: "Voice Call", link: "/plugins/voice-call" },
             { text: "Zalo User", link: "/plugins/zalouser" },
@@ -602,6 +613,7 @@ export default defineConfig({
         {
           text: "Other",
           items: [
+            { text: "Credits", link: "/reference/credits" },
             { text: "Session Mgmt & Compaction", link: "/reference/session-management-compaction" },
           ],
         },

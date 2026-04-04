@@ -15,22 +15,48 @@ Memory search tools are provided by the active memory plugin (default:
 
 ## Memory files (Markdown)
 
-The default workspace layout uses two memory layers:
+The default workspace layout uses three memory layers:
 
 - `memory/YYYY-MM-DD.md`
   - Daily log (append-only).
   - Read today + yesterday at session start.
+  - **Shared:** work/technical content only. Do NOT write private peer details here.
+- `memory/peers/<name>/`
+  - Per-peer private memory directories.
+  - Each contact gets their own directory for conversation notes, profiles, and
+    details shared in confidence.
+  - When in a peer's DM session, only read/write that peer's directory + shared files.
+  - The owner's main session has full access to all peer directories.
+  - See the AGENTS.md template for full privacy rules.
 - `MEMORY.md` (optional)
   - Curated long-term memory.
   - **Only load in the main, private session** (never in group contexts).
 
 These files live under the workspace (`agents.defaults.workspace`, default
-`~/edwin`). See [Agent workspace](/concepts/agent-workspace) for the full layout.
+`~/.edwin/workspace`). See [Agent workspace](/concepts/agent-workspace) for the full layout.
+
+## Per-peer memory privacy
+
+When `session.dmScope` is set to `per-peer` or `per-channel-peer`, each contact
+gets an isolated session with its own context window. Memory files should respect
+the same boundary:
+
+- **In a peer's session:** only read/write `memory/peers/<peer>/` + shared files
+  (`contacts.md`, `tasks/`, daily notes).
+- **In the owner's session:** full access to all directories.
+- **In group chats:** shared files only, no peer-specific directories.
+- **Private details** (conversation content, confessions, relationship context)
+  go in `memory/peers/<name>/`, never in shared daily notes.
+
+This is enforced by convention in the workspace files (`AGENTS.md`), not by
+filesystem permissions. The agent is instructed to respect boundaries via the
+system prompt.
 
 ## When to write memory
 
 - Decisions, preferences, and durable facts go to `MEMORY.md`.
-- Day-to-day notes and running context go to `memory/YYYY-MM-DD.md`.
+- Day-to-day shared notes and running context go to `memory/YYYY-MM-DD.md`.
+- Private conversation details go to `memory/peers/<name>/`.
 - If someone says "remember this," write it down (do not keep it in RAM).
 - This area is still evolving. It helps to remind the model to store memories; it will know what to do.
 - If you want something to stick, **ask the bot to write it** into memory.

@@ -36,7 +36,7 @@ Reference the nix-edwin README for module options.
 
 ## What you get
 
-- Gateway + macOS app + tools (whisper, spotify, cameras) — all pinned
+- Gateway + Edwin Desktop + tools (whisper, spotify, cameras) — all pinned
 - Launchd service that survives reboots
 - Plugin system with declarative config
 - Instant rollback: `home-manager switch --rollback`
@@ -82,7 +82,7 @@ stay out of the immutable store.
 The macOS packaging flow expects a stable Info.plist template at:
 
 ```
-apps/macos/Sources/Edwin/Resources/Info.plist
+edwin-desktop/macos/Sources/Edwin/Resources/Info.plist
 ```
 
 [`scripts/package-mac-app.sh`](https://github.com/jonesj38/edwin/blob/main/scripts/package-mac-app.sh) copies this template into the app bundle and patches dynamic fields

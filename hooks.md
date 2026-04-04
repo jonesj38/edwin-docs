@@ -310,7 +310,7 @@ edwin hooks list
 # Enable it
 edwin hooks enable my-hook
 
-# Restart your gateway process (menu bar app restart on macOS, or restart your dev process)
+# Restart your gateway process (Edwin Desktop app restart on macOS, or restart your dev process)
 
 # Trigger the event
 # Send /new via your messaging channel
@@ -696,7 +696,7 @@ Monitor gateway logs to see hook execution:
 
 ```bash
 # macOS
-./scripts/edwinlog.sh -f
+./scripts/clawlog.sh -f
 
 # Other platforms
 tail -f ~/.edwin/gateway.log
@@ -819,7 +819,7 @@ Look for missing:
 
 3. Check gateway logs for errors:
    ```bash
-   ./scripts/edwinlog.sh | grep hook
+   ./scripts/clawlog.sh | grep hook
    ```
 
 ### Handler Errors

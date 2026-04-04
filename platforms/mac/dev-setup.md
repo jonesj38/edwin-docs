@@ -1,5 +1,5 @@
 ---
-summary: "Setup guide for developers working on the Edwin macOS app"
+summary: "Setup guide for developers working on the Edwin Edwin Desktop"
 read_when:
   - Setting up the macOS development environment
 title: "macOS Dev Setup"
@@ -7,7 +7,7 @@ title: "macOS Dev Setup"
 
 # macOS Developer Setup
 
-This guide covers the necessary steps to build and run the Edwin macOS application from source.
+This guide covers the necessary steps to build and run Edwin Desktop from source.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ pnpm install
 
 ## 2. Build and Package the App
 
-To build the macOS app and package it into `dist/Edwin.app`, run:
+To build the Edwin Desktop and package it into `dist/Edwin.app`, run:
 
 ```bash
 ./scripts/package-mac-app.sh
@@ -34,14 +34,14 @@ To build the macOS app and package it into `dist/Edwin.app`, run:
 
 If you don't have an Apple Developer ID certificate, the script will automatically use **ad-hoc signing** (`-`).
 
-For dev run modes, signing flags, and Team ID troubleshooting, see the macOS app README:
-https://github.com/jonesj38/edwin/blob/main/apps/macos/README.md
+For dev run modes, signing flags, and Team ID troubleshooting, see the Edwin Desktop README:
+https://github.com/jonesj38/edwin-desktop/blob/main/macos/README.md
 
 > **Note**: Ad-hoc signed apps may trigger security prompts. If the app crashes immediately with "Abort trap 6", see the [Troubleshooting](#troubleshooting) section.
 
 ## 3. Install the CLI
 
-The macOS app expects a global `edwin` CLI install to manage background tasks.
+The Edwin Desktop expects a global `edwin` CLI install to manage background tasks.
 
 **To install it (recommended):**
 
@@ -59,7 +59,7 @@ npm install -g edwin@<version>
 
 ### Build Fails: Toolchain or SDK Mismatch
 
-The macOS app build expects the latest macOS SDK and Swift 6.2 toolchain.
+The Edwin Desktop build expects the latest macOS SDK and Swift 6.2 toolchain.
 
 **System dependencies (required):**
 

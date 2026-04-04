@@ -9,7 +9,7 @@ title: "Gateway on macOS"
 
 # Gateway on macOS (external launchd)
 
-Edwin.app no longer bundles Node/Bun or the Gateway runtime. The macOS app
+Edwin.app no longer bundles Node/Bun or the Gateway runtime. The Edwin Desktop
 expects an **external** `edwin` CLI install, does not spawn the Gateway as a
 child process, and manages a per‑user launchd service to keep the Gateway
 running (or attaches to an existing local Gateway if one is already running).
@@ -22,7 +22,7 @@ You need Node 22+ on the Mac, then install `edwin` globally:
 npm install -g edwin@<version>
 ```
 
-The macOS app’s **Install CLI** button runs the same flow via npm/pnpm (bun not recommended for Gateway runtime).
+The Edwin Desktop’s **Install CLI** button runs the same flow via npm/pnpm (bun not recommended for Gateway runtime).
 
 ## Launchd (Gateway as LaunchAgent)
 
@@ -37,7 +37,7 @@ Plist location (per‑user):
 
 Manager:
 
-- The macOS app owns LaunchAgent install/update in Local mode.
+- The Edwin Desktop owns LaunchAgent install/update in Local mode.
 - The CLI can also install it: `edwin gateway install`.
 
 Behavior:
@@ -53,7 +53,7 @@ Logging:
 
 ## Version compatibility
 
-The macOS app checks the gateway version against its own version. If they’re
+The Edwin Desktop checks the gateway version against its own version. If they’re
 incompatible, update the global CLI to match the app version.
 
 ## Smoke check

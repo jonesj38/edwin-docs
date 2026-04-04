@@ -1,13 +1,13 @@
 ---
 summary: "macOS IPC architecture for Edwin app, gateway node transport, and PeekabooBridge"
 read_when:
-  - Editing IPC contracts or menu bar app IPC
+  - Editing IPC contracts or Edwin Desktop app IPC
 title: "macOS IPC"
 ---
 
 # Edwin macOS IPC architecture
 
-**Current model:** a local Unix socket connects the **node host service** to the **macOS app** for exec approvals + `system.run`. A `edwin-mac` debug CLI exists for discovery/connect checks; agent actions still flow through the Gateway WebSocket and `node.invoke`. UI automation uses PeekabooBridge.
+**Current model:** a local Unix socket connects the **node host service** to the **Edwin Desktop** for exec approvals + `system.run`. A `edwin-mac` debug CLI exists for discovery/connect checks; agent actions still flow through the Gateway WebSocket and `node.invoke`. UI automation uses PeekabooBridge.
 
 ## Goals
 
@@ -25,7 +25,7 @@ title: "macOS IPC"
 ### Node service + app IPC
 
 - A headless node host service connects to the Gateway WebSocket.
-- `system.run` requests are forwarded to the macOS app over a local Unix socket.
+- `system.run` requests are forwarded to the Edwin Desktop over a local Unix socket.
 - The app performs the exec in UI context, prompts if needed, and returns output.
 
 Diagram (SCI):

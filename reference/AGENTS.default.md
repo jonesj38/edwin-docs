@@ -93,20 +93,20 @@ When building software/projects, use this as the default process unless the huma
 
 ## Backup tip (recommended)
 
-If you treat this workspace as Edwin’s “memory”, make it a git repo (ideally private) so `AGENTS.md` and your memory files are backed up.
+If you treat this workspace as Clawd’s “memory”, make it a git repo (ideally private) so `AGENTS.md` and your memory files are backed up.
 
 ```bash
 cd ~/.edwin/workspace
 git init
 git add AGENTS.md
-git commit -m "Add Edwin workspace"
+git commit -m "Add Clawd workspace"
 # Optional: add a private remote + push
 ```
 
 ## What Edwin Does
 
 - Runs WhatsApp gateway + Pi coding agent so the assistant can read/write chats, fetch context, and run skills via the host Mac.
-- macOS app manages permissions (screen recording, notifications, microphone) and exposes the `edwin` CLI via its bundled binary.
+- Edwin Desktop manages permissions (screen recording, notifications, microphone) and exposes the `edwin` CLI via its bundled binary.
 - Direct chats collapse into the agent's `main` session by default; groups stay isolated as `agent:<agentId>:<channel>:group:<id>` (rooms/channels: `agent:<agentId>:<channel>:channel:<id>`); heartbeats keep background tasks alive.
 
 ## Core Skills (enable in Settings → Skills)

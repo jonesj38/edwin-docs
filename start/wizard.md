@@ -151,7 +151,7 @@ Tip: `--json` does **not** imply non-interactive mode. Use `--non-interactive` (
    - Installs optional dependencies (some use Homebrew on macOS).
 
 9. **Finish**
-   - Summary + next steps, including iOS/Android/macOS apps for extra features.
+   - Summary + next steps, including iOS/Android/Desktop clients for extra features.
 
 - If no GUI is detected, the wizard prints SSH port-forward instructions for the Control UI instead of opening a browser.
 - If the Control UI assets are missing, the wizard attempts to build them; fallback is `pnpm ui:build` (auto-installs UI deps).
@@ -301,7 +301,7 @@ edwin agents add work \
 ## Gateway wizard RPC
 
 The Gateway exposes the wizard flow over RPC (`wizard.start`, `wizard.next`, `wizard.cancel`, `wizard.status`).
-Clients (macOS app, Control UI) can render steps without re‑implementing onboarding logic.
+Clients (Edwin Desktop, Control UI) can render steps without re‑implementing onboarding logic.
 
 ## Signal setup (signal-cli)
 
@@ -343,7 +343,7 @@ will prompt to install it (npm or a local path) before it can be configured.
 
 ## Related docs
 
-- macOS app onboarding: [Onboarding](/start/onboarding)
+- Edwin Desktop onboarding: [Onboarding](/start/onboarding)
 - Config reference: [Gateway configuration](/gateway/configuration)
 - Providers: [WhatsApp](/channels/whatsapp), [Telegram](/channels/telegram), [Discord](/channels/discord), [Google Chat](/channels/googlechat), [Signal](/channels/signal), [BlueBubbles](/channels/bluebubbles) (iMessage), [iMessage](/channels/imessage) (legacy)
 - Skills: [Skills](/tools/skills), [Skills config](/tools/skills-config)

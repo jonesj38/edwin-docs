@@ -10,7 +10,7 @@ title: "Gateway-Owned Pairing"
 # Gateway-owned pairing (Option B)
 
 In Gateway-owned pairing, the **Gateway** is the source of truth for which nodes
-are allowed to join. UIs (macOS app, future clients) are just frontends that
+are allowed to join. UIs (Edwin Desktop, future clients) are just frontends that
 approve or reject pending requests.
 
 **Important:** WS nodes use **device pairing** (role `node`) during `connect`.
@@ -69,9 +69,9 @@ Notes:
   `node.pair.request`.
 - Requests may include `silent: true` as a hint for auto-approval flows.
 
-## Auto-approval (macOS app)
+## Auto-approval (Edwin Desktop)
 
-The macOS app can optionally attempt a **silent approval** when:
+The Edwin Desktop can optionally attempt a **silent approval** when:
 
 - the request is marked `silent`, and
 - the app can verify an SSH connection to the gateway host using the same user.

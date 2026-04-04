@@ -12,17 +12,24 @@ x-i18n:
   workflow: 15
 ---
 
-# Edwin ⚡
+# Edwin 🦞
 
 <p align="center">
     <img
-        src="/assets/edwin-logo.png"
+        src="/assets/edwin-logo-text-dark.png"
         alt="Edwin"
-        width="200"
+        width="500"
+        class="dark:hidden"
+    />
+    <img
+        src="/assets/edwin-logo-text.png"
+        alt="Edwin"
+        width="500"
+        class="hidden dark:block"
     />
 </p>
 
-> _"去壳！去壳！"_ — 大概是一只个人AI说的
+> _"去壳！去壳！"_ — 大概是一只太空龙虾说的
 
 <p align="center">
   <strong>适用于任何操作系统的 AI 智能体 Gateway 网关，支持 WhatsApp、Telegram、Discord、iMessage 等。</strong><br />
@@ -51,7 +58,7 @@ flowchart LR
   B --> C["Pi agent"]
   B --> D["CLI"]
   B --> E["Web Control UI"]
-  B --> F["macOS app"]
+  B --> F["Edwin Desktop"]
   B --> G["iOS and Android nodes"]
 ```
 
@@ -111,6 +118,7 @@ Gateway 网关启动后，打开浏览器控制界面。
 - 远程访问：[Web 界面](/web)和 [Tailscale](/gateway/tailscale)
 
 <p align="center">
+  <img src="/whatsapp-edwin.jpg" alt="Edwin" width="420" />
 </p>
 
 ## 配置（可选）

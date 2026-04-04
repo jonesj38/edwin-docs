@@ -1,8 +1,8 @@
 ---
-summary: "Step-by-step release checklist for npm + macOS app"
+summary: "Step-by-step release checklist for npm + Edwin Desktop"
 read_when:
   - Cutting a new npm release
-  - Cutting a new macOS app release
+  - Cutting a new Edwin Desktop release
   - Verifying metadata before publishing
 ---
 
@@ -54,9 +54,9 @@ When the operator says “release”, immediately do this preflight (no extra qu
   - `pnpm test:install:e2e` (requires both keys; runs both providers)
 - [ ] (Optional) Spot-check the web gateway if your changes affect send/receive paths.
 
-5. **macOS app (Sparkle)**
+5. **Edwin Desktop (Sparkle)**
 
-- [ ] Build + sign the macOS app, then zip it for distribution.
+- [ ] Build + sign the Edwin Desktop, then zip it for distribution.
 - [ ] Generate the Sparkle appcast (HTML notes via [`scripts/make_appcast.sh`](https://github.com/jonesj38/edwin/blob/main/scripts/make_appcast.sh)) and update `appcast.xml`.
 - [ ] Keep the app zip (and optional dSYM zip) ready to attach to the GitHub release.
 - [ ] Follow [macOS release](/platforms/mac/release) for the exact commands and required env vars.
@@ -72,7 +72,7 @@ When the operator says “release”, immediately do this preflight (no extra qu
 
 ### Troubleshooting (notes from 2.0.0-beta2 release)
 
-- **npm pack/publish hangs or produces huge tarball**: the macOS app bundle in `dist/Edwin.app` (and release zips) get swept into the package. Fix by whitelisting publish contents via `package.json` `files` (include dist subdirs, docs, skills; exclude app bundles). Confirm with `npm pack --dry-run` that `dist/Edwin.app` is not listed.
+- **npm pack/publish hangs or produces huge tarball**: the Edwin Desktop bundle in `dist/Edwin.app` (and release zips) get swept into the package. Fix by whitelisting publish contents via `package.json` `files` (include dist subdirs, docs, skills; exclude app bundles). Confirm with `npm pack --dry-run` that `dist/Edwin.app` is not listed.
 - **npm auth web loop for dist-tags**: use legacy auth to get an OTP prompt:
   - `NPM_CONFIG_AUTH_TYPE=legacy npm dist-tag add edwin@X.Y.Z latest`
 - **`npx` verification fails with `ECOMPROMISED: Lock compromised`**: retry with a fresh cache:
@@ -107,7 +107,7 @@ Current npm plugin list (update as needed):
 - @edwin/diagnostics-otel
 - @edwin/discord
 - @edwin/feishu
-- @edwin/pipelines
+- @edwin/lobster
 - @edwin/matrix
 - @edwin/msteams
 - @edwin/nextcloud-talk

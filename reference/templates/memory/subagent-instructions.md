@@ -16,7 +16,7 @@ Run `date` first. Do NOT guess the day, date, or time — verify it.
 
 ### 3. Write Conversation Summary (MANDATORY)
 
-After EVERY interaction, write a detailed summary to the vault:
+After EVERY interaction, write a detailed summary to the collection:
 
 **File:** `memory/conversations/YYYY-MM-DD-<contact>-<time>.md`
 
@@ -42,6 +42,6 @@ If a memory indexing script exists, run it:
 ## Rules
 
 - Always check the actual date/time, never guess
-- Write everything down — if it's not in the vault, it didn't happen
+- Write everything down — if it's not in the collection, it didn't happen
 - Be detailed in summaries — future sessions depend on this context
 - Update contact profiles when you learn new information about people

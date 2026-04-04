@@ -36,9 +36,9 @@ x-i18n:
 ```json5
 {
   identity: {
-    name: "Edwin",
+    name: "Clawd",
     theme: "helpful assistant",
-    emoji: "⚡",
+    emoji: "🦞",
   },
   agent: {
     workspace: "~/.edwin/workspace",

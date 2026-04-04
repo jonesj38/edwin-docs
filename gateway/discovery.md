@@ -11,7 +11,7 @@ title: "Discovery and Transports"
 
 Edwin has two distinct problems that look similar on the surface:
 
-1. **Operator remote control**: the macOS menu bar app controlling a gateway running elsewhere.
+1. **Operator remote control**: the macOS Edwin Desktop app controlling a gateway running elsewhere.
 2. **Node pairing**: iOS/Android (and future nodes) finding a gateway and pairing securely.
 
 The design goal is to keep all network discovery/advertising in the **Node Gateway** (`edwin gateway`) and keep clients (mac app, iOS) as consumers.
@@ -112,5 +112,5 @@ The gateway is the source of truth for node/client admission.
 ## Responsibilities by component
 
 - **Gateway**: advertises discovery beacons, owns pairing decisions, and hosts the WS endpoint.
-- **macOS app**: helps you pick a gateway, shows pairing prompts, and uses SSH only as a fallback.
+- **Edwin Desktop**: helps you pick a gateway, shows pairing prompts, and uses SSH only as a fallback.
 - **iOS/Android nodes**: browse Bonjour as a convenience and connect to the paired Gateway WS.

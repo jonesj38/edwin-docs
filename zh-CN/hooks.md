@@ -316,7 +316,7 @@ edwin hooks list
 # Enable it
 edwin hooks enable my-hook
 
-# Restart your gateway process (menu bar app restart on macOS, or restart your dev process)
+# Restart your gateway process (Edwin Desktop app restart on macOS, or restart your dev process)
 
 # Trigger the event
 # Send /new via your messaging channel
@@ -702,7 +702,7 @@ edwin hooks info my-hook
 
 ```bash
 # macOS
-./scripts/edwinlog.sh -f
+./scripts/clawlog.sh -f
 
 # Other platforms
 tail -f ~/.edwin/gateway.log
@@ -825,7 +825,7 @@ edwin hooks info my-hook
 
 3. 检查 Gateway 网关日志中的错误：
    ```bash
-   ./scripts/edwinlog.sh | grep hook
+   ./scripts/clawlog.sh | grep hook
    ```
 
 ### 处理程序错误

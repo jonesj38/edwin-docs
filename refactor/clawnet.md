@@ -1,12 +1,12 @@
 ---
-summary: "EdwinNet refactor: unify network protocol, roles, auth, approvals, identity"
+summary: "Clawnet refactor: unify network protocol, roles, auth, approvals, identity"
 read_when:
   - Planning a unified network protocol for nodes + operator clients
   - Reworking approvals, pairing, TLS, and presence across devices
-title: "EdwinNet Refactor"
+title: "Clawnet Refactor"
 ---
 
-# EdwinNet refactor (protocol + auth unification)
+# Clawnet refactor (protocol + auth unification)
 
 ## Hi
 
@@ -69,14 +69,14 @@ Single, rigorous document for:
 ## Control plane clients today
 
 - CLI → Gateway WS via `callGateway` (`src/gateway/call.ts`).
-- macOS app UI → Gateway WS (`GatewayConnection`).
+- Edwin Desktop UI → Gateway WS (`GatewayConnection`).
 - Web Control UI → Gateway WS.
 - ACP → Gateway WS.
 - Browser control uses its own HTTP control server.
 
 ## Nodes today
 
-- macOS app in node mode connects to Gateway bridge (`MacNodeBridgeSession`).
+- Edwin Desktop in node mode connects to Gateway bridge (`MacNodeBridgeSession`).
 - iOS/Android apps connect to Gateway bridge.
 - Pairing + per‑node token stored on gateway.
 
@@ -108,7 +108,7 @@ Single, rigorous document for:
 
 ---
 
-# Proposed new state (EdwinNet)
+# Proposed new state (Clawnet)
 
 ## One protocol, two roles
 
@@ -255,7 +255,7 @@ Approval is **gateway‑hosted**, UI delivered to operator clients.
 - Optional **operator.read** for status and chat view.
 - Optional **operator.write/admin** only when explicitly enabled.
 
-## macOS app
+## Edwin Desktop
 
 - Operator role by default (control UI).
 - Node role when “Mac node” enabled (system.run, screen, camera).
@@ -281,11 +281,11 @@ Preferred:
 
 - Keypair fingerprint (public key hash).
 
-## Cute slug (pipelines‑themed)
+## Cute slug (lobster‑themed)
 
 Human label only.
 
-- Example: `blue-bolt`, `saltwave`, `mantis-pinch`.
+- Example: `scarlet-claw`, `saltwave`, `mantis-pinch`.
 - Stored in gateway registry, editable.
 - Collision handling: `-2`, `-3`.
 

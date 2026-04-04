@@ -7,9 +7,9 @@ read_when:
 title: "Canvas"
 ---
 
-# Canvas (macOS app)
+# Canvas (Edwin Desktop)
 
-The macOS app embeds an agent‑controlled **Canvas panel** using `WKWebView`. It
+The Edwin Desktop embeds an agent‑controlled **Canvas panel** using `WKWebView`. It
 is a lightweight visual workspace for HTML/CSS/JS, A2UI, and small interactive
 UI surfaces.
 
@@ -67,7 +67,7 @@ Notes:
 ## A2UI in Canvas
 
 A2UI is hosted by the Gateway canvas host and rendered inside the Canvas panel.
-When the Gateway advertises a Canvas host, the macOS app auto‑navigates to the
+When the Gateway advertises a Canvas host, the Edwin Desktop auto‑navigates to the
 A2UI host page on first open.
 
 Default A2UI host URL:

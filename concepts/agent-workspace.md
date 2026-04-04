@@ -100,12 +100,21 @@ These are the standard files Edwin expects inside the workspace:
 - `memory/YYYY-MM-DD.md`
   - Daily memory log (one file per day).
   - Recommended to read today + yesterday on session start.
+  - Shared: work/technical content only. Do not write private peer details here.
+
+- `memory/peers/<name>/` (optional)
+  - Per-peer private memory directories.
+  - Each contact gets a directory for conversation notes, profiles, and details
+    shared in confidence.
+  - Enables memory privacy when using `session.dmScope: "per-peer"` or
+    `"per-channel-peer"`.
+  - See [Memory](/concepts/memory) for privacy rules.
 
 - `MEMORY.md` (optional)
   - Curated long-term memory.
   - Only load in the main, private session (not shared/group contexts).
 
-See [Memory](/concepts/memory) for the workflow and automatic memory flush.
+See [Memory](/concepts/memory) for the workflow, per-peer privacy, and automatic memory flush.
 
 - `skills/` (optional)
   - Workspace-specific skills.

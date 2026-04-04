@@ -63,7 +63,7 @@ What Gets Saved Across Sessions
 │                                                             │
 │  3. DOMAIN KNOWLEDGE                                        │
 │     ├─ Successful retrieval patterns ("what queries work") │
-│     ├─ Vault structure insights                            │
+│     ├─ Collection structure insights                            │
 │     ├─ Search latency baselines                            │
 │     └─ Collection effectiveness                            │
 │                                                             │
@@ -83,7 +83,7 @@ What Gets Saved Across Sessions
 
 Storage:  ~/.shad/history/<run_id>/ (JSONL + JSON)
 Indexing: QMD (hybrid BM25 + vector) + SQLite FTS
-Exports:  Markdown summaries for vault integration
+Exports:  Markdown summaries for collection integration
 ```
 
 ## 3. The 4 Integration Points
@@ -127,8 +127,8 @@ Exports:  Markdown summaries for vault integration
 │              ▼                                                   │
 │  4. EDWIN MEMORY SYSTEM INTEGRATION                            │
 │     ┌──────────────────────────────────────────┐                 │
-│     │ Vault-Native Context                     │                 │
-│     │ • Export run summaries to ~/edwin/       │                 │
+│     │ Collection-Native Context                     │                 │
+│     │ • Export run summaries to ~/clawd/       │                 │
 │     │ • Index via memory_search tool            │                 │
 │     │ • Enable agent: "What patterns tried?"   │                 │
 │     │ • Bidirectional: agents ↔ Shad history  │                 │
@@ -301,7 +301,7 @@ TIME: 2 weeks ago
 │ Result: run-123 ✓ (Pass)     │ ← Stored with lessons learned
 └──────────────────────────────┘
        │
-       │ Exported to vault:
+       │ Exported to collection:
        │ ~/.shad/history/summaries/run-123.md
        │ Contains: OAuth pattern, token refresh strategy, test coverage
        │

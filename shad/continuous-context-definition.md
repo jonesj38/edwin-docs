@@ -10,7 +10,7 @@
 4. **Reason** about task evolution and interdependencies over time
 5. **Verify** consistency between current reasoning and documented decisions from prior work
 
-In essence: **Each session inherits the cognitive state of previous sessions**, treating the vault + run history as a persistent "long-term memory" that grounds new work.
+In essence: **Each session inherits the cognitive state of previous sessions**, treating the collection + run history as a persistent "long-term memory" that grounds new work.
 
 ---
 
@@ -19,8 +19,8 @@ In essence: **Each session inherits the cognitive state of previous sessions**, 
 ### 1. **Execution Artifacts & Decisions**
 
 - **What to save**: Completed subtask results, verification outcomes, decomposition patterns
-- **Where**: Run history (JSON manifests) + vault-indexed session summaries
-- **Format**: JSONL + markdown exports in `~/.shad/history/` and optional vault-integrated index
+- **Where**: Run history (JSON manifests) + collection-indexed session summaries
+- **Format**: JSONL + markdown exports in `~/.shad/history/` and optional collection-integrated index
 - **Retention**: Full history by default; configurable retention windows (e.g., last 30 runs)
 
 ### 2. **Reasoning Traces & Rationales**
@@ -28,26 +28,26 @@ In essence: **Each session inherits the cognitive state of previous sessions**, 
 - **What to save**: Why a decomposition was chosen, trade-offs considered, alternative paths rejected
 - **Where**: `~/.shad/history/<run_id>/trace.jsonl` + exportable markdown summaries
 - **Format**: Structured node metadata (strategy rationale, confidence scores, failure modes)
-- **Retention**: Last 50 runs indexed; older runs archived to vault
+- **Retention**: Last 50 runs indexed; older runs archived to collection
 
 ### 3. **Domain Knowledge Integration**
 
-- **What to save**: Vault state snapshots, retrieval patterns that worked, collection scope
-- **Where**: Vault metadata + QMD cache state
+- **What to save**: Collection state snapshots, retrieval patterns that worked, collection scope
+- **Where**: Collection metadata + QMD cache state
 - **Format**: Index fingerprints, successful retrieval queries, latency baselines
-- **Retention**: Evergreen; invalidate on vault mutation
+- **Retention**: Evergreen; invalidate on collection mutation
 
 ### 4. **Type Contracts & Import Graphs**
 
 - **What to save**: Export manifests from software strategy runs (symbol locations, type signatures)
-- **Where**: `~/.shad/history/<run_id>/exports.json` + optional vault-indexed API reference
+- **Where**: `~/.shad/history/<run_id>/exports.json` + optional collection-indexed API reference
 - **Format**: Structured type maps (module → symbol → type signature)
 - **Retention**: Last 10 successful builds; cache invalidates on changes
 
 ### 5. **Verification & Test Outcomes**
 
 - **What to save**: Test pass/fail rates per subtask, linting errors by category, type check results
-- **Where**: Run history + optional vault-indexed test suite index
+- **Where**: Run history + optional collection-indexed test suite index
 - **Format**: Histograms of verification outcomes, delta reports
 - **Retention**: Last 30 runs for trend analysis
 
@@ -61,7 +61,7 @@ In essence: **Each session inherits the cognitive state of previous sessions**, 
 - **Target**: ≥ 85% (at least 85% of retrieved runs/traces are actionable)
 - **Measurement**: Manual review + automated heuristics (task tag overlap, time decay weighting)
 - **Implementation**:
-  - Hybrid scoring: (vault semantic match + run metadata tag match + recency)
+  - Hybrid scoring: (collection semantic match + run metadata tag match + recency)
   - Config: `memory.qmd.limits.maxResults = 6` → cap low-value results
 
 ### **Recall** (coverage of useful context)
@@ -76,11 +76,11 @@ In essence: **Each session inherits the cognitive state of previous sessions**, 
 ### **Latency of Recall**
 
 - **Definition**: Time from query to retrievable results (excludes LLM reasoning)
-- **Target**: < 500 ms for history queries, < 2 sec for vault synthesis
+- **Target**: < 500 ms for history queries, < 2 sec for collection synthesis
 - **Measurement**: `memory_search` call duration per query
 - **Implementation**:
   - Local SQLite for run history (fast index)
-  - QMD + sqlite-vec for vault (hybrid retrieval + vector acceleration)
+  - QMD + sqlite-vec for collection (hybrid retrieval + vector acceleration)
   - Configurable timeout: `memory.qmd.limits.timeoutMs = 4000`
 
 ---
@@ -91,7 +91,7 @@ In essence: **Each session inherits the cognitive state of previous sessions**, 
 
 ```bash
 # Automatic context injection
-shad run "Build feature X" --vault ~/MyVault
+shad run "Build feature X" --collection ~/MyVault
   # ↓ Retrieves runs tagged with 'feature' or related domains
   # ↓ Injects prior decisions into strategy skeleton
   # ↓ Deduplicates subtasks vs. prior attempts
@@ -156,7 +156,7 @@ if prior_similar_tasks:
 CLI Request
    ↓
 [Shad Server] ← Redis cache of recent runs
-   ├─ Check: Is this a continuation? (same workspace/vault?)
+   ├─ Check: Is this a continuation? (same workspace/collection?)
    ├─ Inject: Relevant prior context into LLM system prompt
    └─ Execute: RLM with enriched strategy skeleton
    ↓
@@ -184,7 +184,7 @@ Redis: Cache subtask results for reuse
 
 ### 4. **Edwin Memory System Integration**
 
-Edwin's vault (`~/edwin/`) can optionally index Shad run history:
+Edwin's collection (`~/clawd/`) can optionally index Shad run history:
 
 ```json5
 {
@@ -266,7 +266,7 @@ Edwin's vault (`~/edwin/`) can optionally index Shad run history:
 ### **Phase 2: Semantic Retrieval**
 
 - [ ] QMD integration (hybrid BM25 + vector search)
-- [ ] Session summaries exported to vault in markdown
+- [ ] Session summaries exported to collection in markdown
 - [ ] Context injection: Pre-run + mid-decomposition (refine strategy during execution)
 - [ ] Latency: < 2 sec pre-run, < 500 ms mid-run
 - [ ] Recall: ≥ 80% for same-domain queries
@@ -330,7 +330,7 @@ Edwin's vault (`~/edwin/`) can optionally index Shad run history:
 
 ```bash
 # Verify run history is saved and indexed
-shad run "Test task" --vault ~/TestVault
+shad run "Test task" --collection ~/TestVault
 ls -la ~/.shad/history/$(date +%Y%m%d)*
 # → Should see: run.jsonl, trace.jsonl, manifest.json, summary.md
 
@@ -350,7 +350,7 @@ shad search "test task" --history
 ```bash
 # Run 5 similar tasks, measure retrieval
 for i in {1..5}; do
-  shad run "Build API with authentication" --vault ~/TestVault --tag auth
+  shad run "Build API with authentication" --collection ~/TestVault --tag auth
   sleep 2
 done
 
@@ -369,7 +369,7 @@ shad search "authentication pattern" --history --show-scores
 
 ```bash
 # Run with context injection enabled
-shad run "Add user management feature" --vault ~/TestVault \
+shad run "Add user management feature" --collection ~/TestVault \
   --show-context-sources
 
 # Check output
@@ -389,7 +389,7 @@ shad run "Add user management feature" --vault ~/TestVault \
 
 ```bash
 # Measure latency across all integration points
-shad run "Complex task" --vault ~/TestVault \
+shad run "Complex task" --collection ~/TestVault \
   --metrics latency
 
 # Check timing report
@@ -493,7 +493,7 @@ Available at: localhost:8000/dashboard/context-continuity
 
     // Memory system integration
     memory: {
-      sources: ["runs", "sessions"], // also: memory, vault
+      sources: ["runs", "sessions"], // also: memory, collection
       export: {
         enabled: true,
         format: "markdown",
@@ -527,5 +527,5 @@ Available at: localhost:8000/dashboard/context-continuity
 ## References
 
 - **Shad Architecture**: [README.md](/repo/README.md) - RLM Engine, strategy skeletons, code mode
-- **Edwin Memory**: [docs/concepts/memory.md](/docs/concepts/memory.md) - Vault layout, memory flush, QMD backend
+- **Edwin Memory**: [docs/concepts/memory.md](/docs/concepts/memory.md) - Collection layout, memory flush, QMD backend
 - **Retrieval Patterns**: [memory-schema.ts](/src/memory/memory-schema.ts) - Indexing, FTS, hybrid search

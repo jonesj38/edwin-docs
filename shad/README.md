@@ -18,7 +18,7 @@ Defines "continuous context window across sessions" with:
 - **Implementation checkpoints**: Step-by-step validation tests
 - **Monitoring & observability**: Key metrics, dashboards, logging
 
-**Key Insight**: Context continuity means Shad treats the vault + run history as a persistent "long-term memory" that grounds new work. Each session should inherit the cognitive state of previous sessions.
+**Key Insight**: Context continuity means Shad treats the collection + run history as a persistent "long-term memory" that grounds new work. Each session should inherit the cognitive state of previous sessions.
 
 ---
 
@@ -86,7 +86,7 @@ Use the **Implementation Checkpoints** in each phase's test section:
 
 ```bash
 # Example (Phase 1)
-shad run "Test task" --vault ~/TestVault
+shad run "Test task" --collection ~/TestVault
 ls -la ~/.shad/history/$(date +%Y%m%d)*
 shad search "test task" --history  # < 1 second?
 ```
@@ -115,7 +115,7 @@ So that when a new task arrives:
 
 1. **Execution Artifacts** → What was produced (code, summaries, outputs)
 2. **Reasoning Traces** → Why decisions were made (decomposition trees, chosen strategies)
-3. **Domain Knowledge** → What patterns work in this domain (retrieval patterns, vault structure)
+3. **Domain Knowledge** → What patterns work in this domain (retrieval patterns, collection structure)
 4. **Type Contracts** → Symbol maps for code generation consistency
 5. **Verification Outcomes** → What passed/failed and why (trends per subtask type)
 
@@ -124,7 +124,7 @@ So that when a new task arrives:
 1. **CLI** (`shad run`) → Prime strategy skeleton with prior runs
 2. **RLM Engine** → Boost confidence, refine decomposition mid-run
 3. **Gateway** → Cache contexts, serve via API to Edwin
-4. **Edwin Memory** → Index Shad runs in vault, agents can query history
+4. **Edwin Memory** → Index Shad runs in collection, agents can query history
 
 ---
 
@@ -214,7 +214,7 @@ A: Yes, always:
 - `--show-context-sources` always shows what was retrieved, so users can audit
 
 **Q: How does this integrate with Edwin?**
-A: Shad run summaries are exported to vault and indexed by Edwin's memory system:
+A: Shad run summaries are exported to collection and indexed by Edwin's memory system:
 
 - Edwin agents can query Shad history via `memory_search` tool
 - Example: agent asks "What auth patterns have we tried?" → retrieves Shad runs
@@ -235,7 +235,7 @@ A: Shad run summaries are exported to vault and indexed by Edwin's memory system
 ## Related Documentation
 
 - [Shad README](~/.shad/repo/README.md) — Overall architecture
-- [Edwin Memory](../concepts/memory.md) — Vault layout, memory flush, QMD backend
+- [Edwin Memory](../concepts/memory.md) — Collection layout, memory flush, QMD backend
 - [RLM Engine](~/.shad/repo/services/shad-api/README.md) — Core reasoning loop
 - [Memory Schema](../../src/memory/memory-schema.ts) — Indexing & retrieval internals
 

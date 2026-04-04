@@ -6,7 +6,7 @@ title: "Onboarding and Config Protocol"
 
 # Onboarding + Config Protocol
 
-Purpose: shared onboarding + config surfaces across CLI, macOS app, and Web UI.
+Purpose: shared onboarding + config surfaces across CLI, Edwin Desktop, and Web UI.
 
 ## Components
 

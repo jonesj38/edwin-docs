@@ -16,7 +16,7 @@ The context window compacts aggressively. Never rely on in-context memory for an
 
 ```bash
 # Semantic recall (when you don't know which file)
-~/.shad/bin/shad recall "query" --vault ~/workspace -m sonnet
+~/.shad/bin/shad recall "query" --collection ~/workspace -m sonnet
 
 # BM25 search (fast, no embeddings needed)
 qmd search "query" --collection workspace --limit 10
@@ -32,11 +32,44 @@ cat memory/tasks/today.md         # current tasks
 ## Key Files
 
 - `memory/identity-full.md` — who you are (rich detail)
-- `memory/contacts.md` — contacts with profiles
+- `memory/contacts.md` — contacts (basic info: names, phones, birthdays)
+- `memory/peers/<name>/profile.md` — per-peer profiles and private notes
 - `memory/workspace-guide.md` — operating rules
-- `memory/YYYY-MM-DD.md` — daily notes (the primary memory layer)
+- `memory/YYYY-MM-DD.md` — daily notes (shared: work/technical only)
 - `memory/tasks/today.md` — current task state
 - `memory/subagent-instructions.md` — rules for sub-agents
+
+## Per-Peer Memory Privacy
+
+When `session.dmScope` is `per-peer` or `per-channel-peer`, each contact gets
+an isolated session. Memory files should respect the same boundary.
+
+Each contact has a private memory directory: `memory/peers/<name>/`
+
+### Privacy Rules
+
+1. **In a peer's DM session:** ONLY read/write that peer's directory + shared files
+   - ✅ `memory/peers/alice/` — Alice's private notes (in Alice's session)
+   - ✅ `memory/contacts.md` — basic contact info (shared)
+   - ✅ `memory/tasks/` — task tracking (shared)
+   - ❌ `memory/peers/bob/` — NEVER read Bob's notes in Alice's session
+
+2. **Owner's session (main):** Full access to everything
+
+3. **Group chats:** Read shared files only, no peer-specific directories
+
+4. **Writing private info:** Conversation details, personal context, things shared
+   in confidence → peer's directory. NEVER in shared daily notes.
+
+5. **Writing shared info:** Work tasks, technical logs, general schedule →
+   shared daily notes or `tasks/`
+
+### Adding a New Peer
+
+1. Create directory: `mkdir memory/peers/<name>/`
+2. Create `profile.md` with basic info
+3. Update `memory/contacts.md` with contact info
+4. Add `identityLinks` entry in config if using multiple channels
 
 ## Every Session
 
@@ -46,6 +79,7 @@ Before doing anything:
 2. Read `USER.md` — this is who you're helping
 3. Read recent `memory/YYYY-MM-DD.md` for context
 4. If in main session: also read `MEMORY.md` (if it exists)
+5. If in a peer session: read `memory/peers/<name>/` for that peer's context
 
 Don't ask permission. Just do it.
 
@@ -55,13 +89,15 @@ Don't ask permission. Just do it.
 - `trash` > `rm` (recoverable beats gone forever)
 - Ask before external actions
 - In group chats: participate, don't dominate
+- **Respect per-peer memory boundaries** — see Privacy Rules above
 - Every heartbeat: flush → compact → check tasks → retrieve as needed. See HEARTBEAT.md.
 
 ## Memory
 
 You wake up fresh each session. These files are your continuity:
 
-- **Daily notes:** `memory/YYYY-MM-DD.md` — raw logs of what happened
+- **Daily notes:** `memory/YYYY-MM-DD.md` — shared logs (work/technical only, NO private peer details)
+- **Per-peer notes:** `memory/peers/<name>/` — private conversation details per contact
 - **Long-term:** `MEMORY.md` — curated memories (only load in main session, not group chats)
 
 ### 📝 Write It Down — No "Mental Notes"!

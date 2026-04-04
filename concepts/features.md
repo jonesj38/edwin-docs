@@ -43,7 +43,7 @@ title: "Features"
 - Group chat support with mention based activation
 - Media support for images, audio, and documents
 - Optional voice note transcription hook
-- WebChat and macOS menu bar app
+- WebChat and macOS Edwin Desktop app
 - iOS node with pairing and Canvas surface
 - Android node with pairing, Canvas, chat, and camera
 

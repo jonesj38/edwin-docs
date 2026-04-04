@@ -40,28 +40,28 @@
 
 ### 1.2 Context Freshness (Recency)
 
-**Definition**: Proportion of retrieved context that reflects current state of vault/codebase.
+**Definition**: Proportion of retrieved context that reflects current state of collection/codebase.
 
 **Metrics**:
 
-| Metric                 | Definition                                              | Target  | Failure Threshold |
-| ---------------------- | ------------------------------------------------------- | ------- | ----------------- |
-| **Stale Rate**         | (docs from >30 days ago) / total retrieved              | ≤0.15   | >0.40             |
-| **Vault Sync Lag**     | Time since last vault content hash match                | <1 hour | >24 hours         |
-| **Cache Hit Validity** | (cache hits with valid context_hash) / total cache hits | ≥0.95   | <0.80             |
-| **Shadow Index Drift** | (shadow index entries) - (actual vault sources) / total | ≤0.05   | >0.20             |
+| Metric                  | Definition                                                   | Target  | Failure Threshold |
+| ----------------------- | ------------------------------------------------------------ | ------- | ----------------- |
+| **Stale Rate**          | (docs from >30 days ago) / total retrieved                   | ≤0.15   | >0.40             |
+| **Collection Sync Lag** | Time since last collection content hash match                | <1 hour | >24 hours         |
+| **Cache Hit Validity**  | (cache hits with valid context_hash) / total cache hits      | ≥0.95   | <0.80             |
+| **Shadow Index Drift**  | (shadow index entries) - (actual collection sources) / total | ≤0.05   | >0.20             |
 
 **Measurement Procedure**:
 
 1. Track document retrieval timestamps vs. document modification times
-2. Monitor vault content hash changes (from SPEC.md §3.5)
+2. Monitor collection content hash changes (from SPEC.md §3.5)
 3. Verify cache key validity before retrieval
-4. Periodically audit shadow index against actual vault state
+4. Periodically audit shadow index against actual collection state
 
 **Critical Events**:
 
-- Cache hit returns data from vault that changed → log as "context stale"
-- Vault ingested new source, but old version cached → log as "shadow index drift"
+- Cache hit returns data from collection that changed → log as "context stale"
+- Collection ingested new source, but old version cached → log as "shadow index drift"
 - Retrieved doc timestamp >30 days old → increment stale count
 
 ---
@@ -88,7 +88,7 @@
 
 **Interpretation**:
 
-- p50 >800ms suggests inefficient search backend or vault too large
+- p50 >800ms suggests inefficient search backend or collection too large
 - p99 spikes during same task indicate context contention
 - Cache hits >100ms indicate Redis latency issues
 
@@ -128,12 +128,12 @@
 
 **Metrics**:
 
-| Metric                    | Definition                                                           | Measurement                                                 | Target              |
-| ------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------- |
-| **Replay Completeness**   | Can past decisions/artifacts be fully reconstructed?                 | `shad resume <run_id>`: compare dag.json equality           | ≥0.99               |
-| **Manifest Stability**    | File manifest changes between runs on same task                      | Git diff of output manifests                                | ≤0.05 (5% variance) |
-| **Artifact Preservation** | Generated artifacts available for reuse in next session              | Check if artifacts directory persists, referenced correctly | ≥0.98               |
-| **Session Linkage**       | Successfully link current session to prior run via run_id/vault_hash | Verify session metadata in History/                         | 100%                |
+| Metric                    | Definition                                                                | Measurement                                                 | Target              |
+| ------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------- |
+| **Replay Completeness**   | Can past decisions/artifacts be fully reconstructed?                      | `shad resume <run_id>`: compare dag.json equality           | ≥0.99               |
+| **Manifest Stability**    | File manifest changes between runs on same task                           | Git diff of output manifests                                | ≤0.05 (5% variance) |
+| **Artifact Preservation** | Generated artifacts available for reuse in next session                   | Check if artifacts directory persists, referenced correctly | ≥0.98               |
+| **Session Linkage**       | Successfully link current session to prior run via run_id/collection_hash | Verify session metadata in History/                         | 100%                |
 
 **Measurement Procedure**:
 
@@ -202,7 +202,7 @@
 **Measurement Procedure**:
 
 1. **Session Isolation**:
-   - Run task A, collect retrieved vault references
+   - Run task A, collect retrieved collection references
    - Run unrelated task B, collect references
    - Compute Jaccard similarity of reference sets
    - Should be ≤0.10 (minimal overlap)
@@ -320,8 +320,8 @@
 
 | Indicator               | Measurement                                              | Threshold                 | Action           |
 | ----------------------- | -------------------------------------------------------- | ------------------------- | ---------------- |
-| **Unresolved Citation** | Synthesis claims unsupported by vault                    | >0 instances              | MEDIUM           |
-| **Implicit Assumption** | Task assumes domain knowledge not in vault               | Human judgment            | HIGH if critical |
+| **Unresolved Citation** | Synthesis claims unsupported by collection               | >0 instances              | MEDIUM           |
+| **Implicit Assumption** | Task assumes domain knowledge not in collection          | Human judgment            | HIGH if critical |
 | **Stale Example**       | Retrieved code example outdated (>2 major versions back) | Date check                | MEDIUM           |
 | **Incomplete Coverage** | Retrieved context covers <60% of required domains        | Semantic analysis         | HIGH             |
 | **No Authority Source** | Topic covered but no authoritative/recent reference      | Source quality score <0.5 | MEDIUM           |
@@ -333,7 +333,7 @@
    - Verify each cite ID exists in artifacts/
    - Unresolved → flag
 2. **Implicit Assumption**:
-   - Human reviewer: does synthesis assume knowledge not in vault?
+   - Human reviewer: does synthesis assume knowledge not in collection?
    - Examples: "as we discussed in auth system" without auth context
 3. **Stale Example**:
    - Extract version numbers from retrieved code
@@ -389,7 +389,9 @@
     }
   },
   "alerts": [],
-  "suggestions": ["Cache hit rate lower than usual (0.42 vs. avg 0.55); consider vault ingestion"]
+  "suggestions": [
+    "Cache hit rate lower than usual (0.42 vs. avg 0.55); consider collection ingestion"
+  ]
 }
 ```
 
@@ -434,7 +436,7 @@
   },
   "gaps_detected": [],
   "recommendations": [
-    "p99 latency elevated; consider vault optimization",
+    "p99 latency elevated; consider collection optimization",
     "Cache hit rate improving; 5 new context packets learned"
   ]
 }
@@ -479,7 +481,7 @@ When adding features to Shad, verify:
 - [ ] **Decomposition**: DAG structure validated; no circular deps introduced?
 - [ ] **Consistency**: Verification layer handles new output type?
 - [ ] **Sessions**: Cross-session reuse tested; isolation verified?
-- [ ] **Gaps**: Coverage scan includes new vault sources?
+- [ ] **Gaps**: Coverage scan includes new collection sources?
 - [ ] **Regression**: Prior baseline metrics still met?
 
 ---

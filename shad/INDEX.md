@@ -63,7 +63,7 @@
 
 1. **Execution Artifacts** — Generated code, outputs, file manifests
 2. **Reasoning Traces** — Decomposition trees, strategy rationale, alternatives considered
-3. **Domain Knowledge** — Successful retrieval patterns, vault structure, search baselines
+3. **Domain Knowledge** — Successful retrieval patterns, collection structure, search baselines
 4. **Type Contracts** — Symbol maps, import graphs, type signatures
 5. **Verification Outcomes** — Pass/fail rates, error trends, category analysis
 
@@ -74,7 +74,7 @@
 1. **CLI** (`shad run`) — Pre-run context injection, strategy skeleton priming
 2. **RLM Engine** — Mid-run context, confidence boosting, decomposition refinement
 3. **Gateway** — API exposure, Redis caching, health monitoring
-4. **Edwin Memory** — Vault integration, agent queries, bidirectional flow
+4. **Edwin Memory** — Collection integration, agent queries, bidirectional flow
 
 ---
 
@@ -95,7 +95,7 @@
 ### Phase 1 Validation
 
 ```bash
-shad run "Test task" --vault ~/TestVault
+shad run "Test task" --collection ~/TestVault
 ls ~/.shad/history/$(date +%Y%m%d)*  # Verify artifacts saved
 shad search "test task" --history     # < 1 second?
 ```
@@ -104,13 +104,13 @@ shad search "test task" --history     # < 1 second?
 
 ```bash
 shad search "authentication pattern" --history --mode hybrid
-shad run "New auth endpoint" --vault ~/test --show-context-sources
+shad run "New auth endpoint" --collection ~/test --show-context-sources
 ```
 
 ### Phase 3 Validation
 
 ```bash
-shad run "New auth endpoint" --vault ~/test --verbose
+shad run "New auth endpoint" --collection ~/test --verbose
 # Should show decomposition refinement points
 ```
 

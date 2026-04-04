@@ -27,7 +27,7 @@ x-i18n:
     - `echo "$APP_STORE_CONNECT_API_KEY_P8" | sed 's/\\n/\n/g' > /tmp/edwin-notary.p8`
     - `xcrun notarytool store-credentials "edwin-notary" --key /tmp/edwin-notary.p8 --key-id "$APP_STORE_CONNECT_KEY_ID" --issuer "$APP_STORE_CONNECT_ISSUER_ID"`
 - 已安装 `pnpm` 依赖（`pnpm install --config.node-linker=hoisted`）。
-- Sparkle 工具通过 SwiftPM 自动获取，位于 `apps/macos/.build/artifacts/sparkle/Sparkle/bin/`（`sign_update`、`generate_appcast` 等）。
+- Sparkle 工具通过 SwiftPM 自动获取，位于 `edwin-desktop/macos/.build/artifacts/sparkle/Sparkle/bin/`（`sign_update`、`generate_appcast` 等）。
 
 ## 构建与打包
 
@@ -66,7 +66,7 @@ SIGN_IDENTITY="Developer ID Application: <Developer Name> (<TEAMID>)" \
 scripts/package-mac-dist.sh
 
 # 可选：随发布一起提供 dSYM
-ditto -c -k --keepParent apps/macos/.build/release/Edwin.app.dSYM dist/Edwin-2026.1.27-beta.1.dSYM.zip
+ditto -c -k --keepParent edwin-desktop/macos/.build/release/Edwin.app.dSYM dist/Edwin-2026.1.27-beta.1.dSYM.zip
 ```
 
 ## Appcast 条目

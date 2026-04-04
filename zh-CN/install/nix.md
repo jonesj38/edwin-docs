@@ -87,7 +87,7 @@ Edwin 从 `EDWIN_CONFIG_PATH` 读取 JSON5 配置，并将可变数据存储在 
 macOS 打包流程期望在以下位置有一个稳定的 Info.plist 模板：
 
 ```
-apps/macos/Sources/Edwin/Resources/Info.plist
+edwin-desktop/macos/Sources/Edwin/Resources/Info.plist
 ```
 
 [`scripts/package-mac-app.sh`](https://github.com/jonesj38/edwin/blob/main/scripts/package-mac-app.sh) 将此模板复制到应用包中并修补动态字段（bundle ID、版本/构建号、Git SHA、Sparkle 密钥）。这使 plist 对于 SwiftPM 打包和 Nix 构建保持确定性（它们不依赖完整的 Xcode 工具链）。

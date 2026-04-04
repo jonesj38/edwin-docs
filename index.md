@@ -5,17 +5,24 @@ read_when:
 title: "Edwin"
 ---
 
-# Edwin ⚡
+# Edwin 🦞
 
 <p align="center">
     <img
-        src="/assets/edwin-logo.png"
+        src="/assets/edwin-logo-text-dark.png"
         alt="Edwin"
-        width="200"
+        width="500"
+        class="dark:hidden"
+    />
+    <img
+        src="/assets/edwin-logo-text.png"
+        alt="Edwin"
+        width="500"
+        class="hidden dark:block"
     />
 </p>
 
-> _Your AI, everywhere._
+> _"EXFOLIATE! EXFOLIATE!"_ — A space lobster, probably
 
 <p align="center">
   <strong>Any OS gateway for AI agents across WhatsApp, Telegram, Discord, iMessage, and more.</strong><br />
@@ -44,7 +51,7 @@ flowchart LR
   B --> C["Pi agent"]
   B --> D["CLI"]
   B --> E["Web Control UI"]
-  B --> F["macOS app"]
+  B --> F["Edwin Desktop"]
   B --> G["iOS and Android nodes"]
 ```
 
@@ -104,6 +111,7 @@ Open the browser Control UI after the Gateway starts.
 - Remote access: [Web surfaces](/web) and [Tailscale](/gateway/tailscale)
 
 <p align="center">
+  <img src="/whatsapp-edwin.jpg" alt="Edwin" width="420" />
 </p>
 
 ## Configuration (optional)

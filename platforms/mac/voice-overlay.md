@@ -7,7 +7,7 @@ title: "Voice Overlay"
 
 # Voice Overlay Lifecycle (macOS)
 
-Audience: macOS app contributors. Goal: keep the voice overlay predictable when wake-word and push-to-talk overlap.
+Audience: Edwin Desktop contributors. Goal: keep the voice overlay predictable when wake-word and push-to-talk overlap.
 
 ### Current intent
 

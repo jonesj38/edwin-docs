@@ -57,7 +57,7 @@ diff -u \
 
 # Check session isolation
 cat ~/.shad/history/Runs/<run_id>/metrics/context_continuity.json | \
-  jq '.vault_state.source_overlap'
+  jq '.collection_state.source_overlap'
 ```
 
 ---
@@ -66,13 +66,13 @@ cat ~/.shad/history/Runs/<run_id>/metrics/context_continuity.json | \
 
 **Q: When and how does Shad break?**
 
-| Failure Mode            | Detection                             | Action                            |
-| ----------------------- | ------------------------------------- | --------------------------------- |
-| **Empty Results**       | retrieval returns 0 docs              | Review vault gaps; add sources    |
-| **Type Errors**         | Verification finds undefined types    | Check contracts node completeness |
-| **Stale Context**       | cache_hit=true but content changed    | Clear cache, re-ingest vault      |
-| **Circular Dependency** | DAG not acyclic                       | Review decomposition logic        |
-| **Citation Unresolved** | Synthesis claims unsupported by vault | Add missing source                |
+| Failure Mode            | Detection                                  | Action                              |
+| ----------------------- | ------------------------------------------ | ----------------------------------- |
+| **Empty Results**       | retrieval returns 0 docs                   | Review collection gaps; add sources |
+| **Type Errors**         | Verification finds undefined types         | Check contracts node completeness   |
+| **Stale Context**       | cache_hit=true but content changed         | Clear cache, re-ingest collection   |
+| **Circular Dependency** | DAG not acyclic                            | Review decomposition logic          |
+| **Citation Unresolved** | Synthesis claims unsupported by collection | Add missing source                  |
 
 **How to Check**:
 
@@ -157,7 +157,7 @@ jq '{
 □ Verify cache validity
   └─ Run: shad run --cache-validate
 
-□ Audit vault sync (weekly)
+□ Audit collection sync (weekly)
   └─ Run: shad sources status
   └─ Check shadow_index_drift < 0.05
 
@@ -178,7 +178,7 @@ jq '{
 
 **Likely causes**:
 
-1. **Vault gap**: Query topic missing from vault
+1. **Collection gap**: Query topic missing from collection
    - Check: `shad search "<topic>" -l 10`
    - If empty: add sources with `shad sources add <url>`
 
@@ -194,8 +194,8 @@ jq '{
 
 **Likely causes**:
 
-1. **Vault changed**: Source content modified → context invalid
-   - Check: context_continuity.json `vault_hash`
+1. **Collection changed**: Source content modified → context invalid
+   - Check: context_continuity.json `collection_hash`
    - Fix: run `shad sources sync` to update index
 
 2. **Task too different**: New task unrelated to prior context
@@ -227,10 +227,10 @@ jq '{
 
 ### If Precision is Low (<0.70)
 
-1. **Check vault content**:
+1. **Check collection content**:
 
    ```bash
-   shad search "your topic" -v ~/vault -l 5
+   shad search "your topic" --collection ~/collection -l 5
    # Check results quality
    ```
 
@@ -247,7 +247,7 @@ jq '{
 
 ### If Latency is High (>2s p99)
 
-1. **Check vault size**:
+1. **Check collection size**:
 
    ```bash
    shad sources status
@@ -285,15 +285,15 @@ jq '{
 
 ## When to Escalate to Human Review
 
-| Condition                   | Action                                          |
-| --------------------------- | ----------------------------------------------- |
-| **CRITICAL failure**        | Review run_report, add context, retry           |
-| **Precision <0.50**         | Audit vault; consider domain expertise needed   |
-| **Manifest delta >0.20**    | Code generation unstable; review contracts node |
-| **Unresolved citations >3** | Missing vault sources; plan ingestion           |
-| **Type violations >5**      | Verification too strict or contracts too loose  |
-| **Latency p99 >5s**         | Investigate search backend; scale Redis         |
-| **Circular dependency**     | Decomposition logic error; report as bug        |
+| Condition                   | Action                                             |
+| --------------------------- | -------------------------------------------------- |
+| **CRITICAL failure**        | Review run_report, add context, retry              |
+| **Precision <0.50**         | Audit collection; consider domain expertise needed |
+| **Manifest delta >0.20**    | Code generation unstable; review contracts node    |
+| **Unresolved citations >3** | Missing collection sources; plan ingestion         |
+| **Type violations >5**      | Verification too strict or contracts too loose     |
+| **Latency p99 >5s**         | Investigate search backend; scale Redis            |
+| **Circular dependency**     | Decomposition logic error; report as bug           |
 
 ---
 

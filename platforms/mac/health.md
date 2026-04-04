@@ -1,5 +1,5 @@
 ---
-summary: "How the macOS app reports gateway/Baileys health states"
+summary: "How the Edwin Desktop reports gateway/Baileys health states"
 read_when:
   - Debugging mac app health indicators
 title: "Health Checks"
@@ -7,7 +7,7 @@ title: "Health Checks"
 
 # Health Checks on macOS
 
-How to see whether the linked channel is healthy from the menu bar app.
+How to see whether the linked channel is healthy from the Edwin Desktop app.
 
 ## Menu bar
 

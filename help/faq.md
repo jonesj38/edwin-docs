@@ -742,7 +742,7 @@ buy one as an always-on host, but a small VPS, home server, or Raspberry Pi-clas
 
 You only need a Mac **for macOS-only tools**. For iMessage, use [BlueBubbles](/channels/bluebubbles) (recommended) - the BlueBubbles server runs on any Mac, and the Gateway can run on Linux or elsewhere. If you want other macOS-only tools, run the Gateway on a Mac or pair a macOS node.
 
-Docs: [BlueBubbles](/channels/bluebubbles), [Nodes](/nodes), [Mac remote mode](/platforms/mac/remote).
+Docs: [BlueBubbles](/channels/bluebubbles), [Nodes](/nodes), [Desktop remote mode](/platforms/mac/remote).
 
 ### Do I need a Mac mini for iMessage support
 
@@ -755,7 +755,7 @@ Common setups:
 - Run everything on the Mac if you want the simplest single‑machine setup.
 
 Docs: [BlueBubbles](/channels/bluebubbles), [Nodes](/nodes),
-[Mac remote mode](/platforms/mac/remote).
+[Desktop remote mode](/platforms/mac/remote).
 
 ### If I buy a Mac mini to run Edwin can I connect it to my MacBook Pro
 
@@ -766,7 +766,7 @@ capabilities like screen/camera/canvas and `system.run` on that device.
 Common pattern:
 
 - Gateway on the Mac mini (always-on).
-- MacBook Pro runs the macOS app or a node host and pairs to the Gateway.
+- MacBook Pro runs the Edwin Desktop or a node host and pairs to the Gateway.
 - Use `edwin nodes status` / `edwin nodes list` to see it.
 
 Docs: [Nodes](/nodes), [Nodes CLI](/cli/nodes).
@@ -998,7 +998,7 @@ Use managed overrides instead of editing the repo copy. Put your changes in `~/.
 
 ### Can I load skills from a custom folder
 
-Yes. Add extra directories via `skills.load.extraDirs` in `~/.edwin/edwin.json` (lowest precedence). Default precedence remains: `<workspace>/skills` → `~/.edwin/skills` → bundled → `skills.load.extraDirs`. `edwin-skills` installs into `./skills` by default, which Edwin treats as `<workspace>/skills`.
+Yes. Add extra directories via `skills.load.extraDirs` in `~/.edwin/edwin.json` (lowest precedence). Default precedence remains: `<workspace>/skills` → `~/.edwin/skills` → bundled → `skills.load.extraDirs`. `clawhub` installs into `./skills` by default, which Edwin treats as `<workspace>/skills`.
 
 ### How can I use different models for different tasks
 
@@ -1045,17 +1045,17 @@ Docs: [Cron jobs](/automation/cron-jobs), [Cron vs Heartbeat](/automation/cron-v
 
 ### How do I install skills on Linux
 
-Use **Edwin Skills** (CLI) or drop skills into your workspace. The macOS Skills UI isn't available on Linux.
-Browse skills at https://skills.edwinpai.com.
+Use **ClawHub** (CLI) or drop skills into your workspace. The macOS Skills UI isn't available on Linux.
+Browse skills at https://clawhub.com.
 
-Install the Edwin Skills CLI (pick one package manager):
+Install the ClawHub CLI (pick one package manager):
 
 ```bash
-npm i -g edwin-skills
+npm i -g clawhub
 ```
 
 ```bash
-pnpm add -g edwin-skills
+pnpm add -g clawhub
 ```
 
 ### Can Edwin run tasks on a schedule or continuously in the background
@@ -1121,11 +1121,11 @@ targeting those APIs.
 Install skills:
 
 ```bash
-edwin-skills install <skill-slug>
-edwin-skills update --all
+clawhub install <skill-slug>
+clawhub update --all
 ```
 
-Edwin Skills installs into `./skills` under your current directory (or falls back to your configured Edwin workspace); Edwin treats that as `<workspace>/skills` on the next session. For shared skills across agents, place them in `~/.edwin/skills/<name>/SKILL.md`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills) and [Edwin Skills](/tools/edwin-skills).
+ClawHub installs into `./skills` under your current directory (or falls back to your configured Edwin workspace); Edwin treats that as `<workspace>/skills` on the next session. For shared skills across agents, place them in `~/.edwin/skills/<name>/SKILL.md`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills) and [ClawHub](/tools/clawhub).
 
 ### How do I install the Chrome extension for browser takeover
 
@@ -1470,7 +1470,7 @@ Typical setup:
 1. Run the Gateway on the always-on host (VPS/home server).
 2. Put the Gateway host + your computer on the same tailnet.
 3. Ensure the Gateway WS is reachable (tailnet bind or SSH tunnel).
-4. Open the macOS app locally and connect in **Remote over SSH** mode (or direct tailnet)
+4. Open the Edwin Desktop locally and connect in **Remote over SSH** mode (or direct tailnet)
    so it can register as a node.
 5. Approve the node on the Gateway:
    ```bash
@@ -1483,7 +1483,7 @@ No separate TCP bridge is required; nodes connect over the Gateway WebSocket.
 Security reminder: pairing a macOS node allows `system.run` on that machine. Only
 pair devices you trust, and review [Security](/gateway/security).
 
-Docs: [Nodes](/nodes), [Gateway protocol](/gateway/protocol), [macOS remote mode](/platforms/mac/remote), [Security](/gateway/security).
+Docs: [Nodes](/nodes), [Gateway protocol](/gateway/protocol), [Desktop remote mode](/platforms/mac/remote), [Security](/gateway/security).
 
 ### Tailscale is connected but I get no replies What now
 
@@ -1637,7 +1637,7 @@ Serve exposes the **Gateway Control UI + WS**. Nodes connect over the same Gatew
 Recommended setup:
 
 1. **Make sure the VPS + Mac are on the same tailnet**.
-2. **Use the macOS app in Remote mode** (SSH target can be the tailnet hostname).
+2. **Use the Edwin Desktop in Remote mode** (SSH target can be the tailnet hostname).
    The app will tunnel the Gateway port and connect as a node.
 3. **Approve the node** on the gateway:
    ```bash
@@ -1645,7 +1645,7 @@ Recommended setup:
    edwin nodes approve <requestId>
    ```
 
-Docs: [Gateway protocol](/gateway/protocol), [Discovery](/gateway/discovery), [macOS remote mode](/platforms/mac/remote).
+Docs: [Gateway protocol](/gateway/protocol), [Discovery](/gateway/discovery), [Desktop remote mode](/platforms/mac/remote).
 
 ## Env vars and .env loading
 
@@ -2374,7 +2374,7 @@ Set `gateway.mode: "remote"` and point to a remote WebSocket URL, optionally wit
 Notes:
 
 - `edwin gateway` only starts when `gateway.mode` is `local` (or you pass the override flag).
-- The macOS app watches the config file and switches modes live when these values change.
+- The Edwin Desktop watches the config file and switches modes live when these values change.
 
 ### The Control UI says unauthorized or keeps reconnecting What now
 
@@ -2827,4 +2827,4 @@ You can add options like `debounce:2s cap:25 drop:summarize` for followup modes.
 
 ---
 
-Still stuck? Ask in [Discord](https://discord.com/invite/edwin) or open a [GitHub discussion](https://github.com/jonesj38/edwin/discussions).
+Still stuck? Ask in [Discord](https://discord.com/invite/clawd) or open a [GitHub discussion](https://github.com/jonesj38/edwin/discussions).

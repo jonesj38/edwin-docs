@@ -17,7 +17,9 @@ export function mintlifyCompat(): Plugin {
     name: "mintlify-compat",
     enforce: "pre",
     transform(code: string, id: string) {
-      if (!id.endsWith(".md")) return;
+      if (!id.endsWith(".md")) {
+        return;
+      }
 
       let result = code;
 
@@ -60,7 +62,9 @@ function transformOutsideCodeBlocks(md: string, transform: (text: string) => str
   return parts
     .map((part, i) => {
       // Odd indices are code blocks
-      if (i % 2 === 1) return part;
+      if (i % 2 === 1) {
+        return part;
+      }
       return transform(part);
     })
     .join("");

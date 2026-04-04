@@ -1,5 +1,5 @@
 ---
-summary: "Camera capture (iOS node + macOS app) for agent use: photos (jpg) and short video clips (mp4)"
+summary: "Camera capture (iOS node + Edwin Desktop) for agent use: photos (jpg) and short video clips (mp4)"
 read_when:
   - Adding or modifying camera capture on iOS nodes or macOS
   - Extending agent-accessible MEDIA temp-file workflows
@@ -12,7 +12,7 @@ Edwin supports **camera capture** for agent workflows:
 
 - **iOS node** (paired via Gateway): capture a **photo** (`jpg`) or **short video clip** (`mp4`, with optional audio) via `node.invoke`.
 - **Android node** (paired via Gateway): capture a **photo** (`jpg`) or **short video clip** (`mp4`, with optional audio) via `node.invoke`.
-- **macOS app** (node via Gateway): capture a **photo** (`jpg`) or **short video clip** (`mp4`, with optional audio) via `node.invoke`.
+- **Edwin Desktop** (node via Gateway): capture a **photo** (`jpg`) or **short video clip** (`mp4`, with optional audio) via `node.invoke`.
 
 All camera access is gated behind **user-controlled settings**.
 
@@ -104,7 +104,7 @@ Like `canvas.*`, the Android node only allows `camera.*` commands in the **foreg
 
 Photos are recompressed to keep the base64 payload under 5 MB.
 
-## macOS app
+## Edwin Desktop
 
 ### User setting (default off)
 

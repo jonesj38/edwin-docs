@@ -85,7 +85,7 @@ History/Runs/<run_id>/
     {
       "rank": 1,
       "doc_id": "auth/oauth.md",
-      "vault_id": "project",
+      "collection_id": "project",
       "score": 0.94,
       "relevance": "relevant",
       "timestamp_retrieved": "2026-02-05T14:23:15Z",
@@ -96,7 +96,7 @@ History/Runs/<run_id>/
     {
       "rank": 2,
       "doc_id": "patterns/auth-flow.md",
-      "vault_id": "patterns",
+      "collection_id": "patterns",
       "score": 0.87,
       "relevance": "relevant",
       "timestamp_retrieved": "2026-02-05T14:23:15Z",
@@ -369,14 +369,14 @@ def compute_latency_percentiles(retrieval_logs: List[dict]) -> dict:
       "prior_run_id": "xyz789",
       "prior_goal": "Design API schema",
       "timestamp": "2026-02-04T16:30:00Z",
-      "vault_hash": "a1b2c3d4",
+      "collection_hash": "a1b2c3d4",
       "linked": true,
-      "link_reason": "Same vault, related goal",
+      "link_reason": "Same collection, related goal",
       "context_packets_available": 5
     }
   ],
-  "vault_state": {
-    "vault_hash": "a1b2c3d4",
+  "collection_state": {
+    "collection_hash": "a1b2c3d4",
     "source_count": 42,
     "modified_since_prior_run": false,
     "shadow_index_valid": true,
@@ -464,7 +464,7 @@ def compute_latency_percentiles(retrieval_logs: List[dict]) -> dict:
   "fallback_tier_3": {
     "attempted": true,
     "status": "waiting_for_human",
-    "prompt": "No context found for 'distributed caching'. Add to vault?"
+    "prompt": "No context found for 'distributed caching'. Add to collection?"
   },
   "recovery_status": "escalated_to_human"
 }
@@ -554,7 +554,7 @@ def _generate_alerts(runs: List[dict]) -> List[str]:
     # Retrieval alerts
     retrieval_agg = _aggregate_retrieval(runs)
     if retrieval_agg['avg_precision_at_10'] < 0.60:
-        alerts.append("⚠️ ALERT: Retrieval precision <0.60 (indicate vault gaps)")
+        alerts.append("⚠️ ALERT: Retrieval precision <0.60 (indicate collection gaps)")
     if retrieval_agg['p99_latency_ms'] > 5000:
         alerts.append("⚠️ ALERT: p99 latency >5s (check search backend)")
 

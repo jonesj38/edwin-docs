@@ -11,7 +11,7 @@ title: "Peekaboo Bridge"
 
 Edwin can host **PeekabooBridge** as a local, permission‑aware UI automation
 broker. This lets the `peekaboo` CLI drive UI automation while reusing the
-macOS app’s TCC permissions.
+Edwin Desktop’s TCC permissions.
 
 ## What this is (and isn’t)
 
@@ -21,7 +21,7 @@ macOS app’s TCC permissions.
 
 ## Enable the bridge
 
-In the macOS app:
+In the Edwin Desktop:
 
 - Settings → **Enable Peekaboo Bridge**
 

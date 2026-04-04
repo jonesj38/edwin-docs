@@ -311,9 +311,9 @@ Assume “compromised” means: someone got into a room that can trigger the bot
 
 ## Lessons Learned (The Hard Way)
 
-### The `find ~` Incident ⚡
+### The `find ~` Incident 🦞
 
-On Day 1, a friendly tester asked Edwin to run `find ~` and share the output. Edwin happily dumped the entire home directory structure to a group chat.
+On Day 1, a friendly tester asked Clawd to run `find ~` and share the output. Clawd happily dumped the entire home directory structure to a group chat.
 
 **Lesson:** Even "innocent" requests can leak sensitive info. Directory structures reveal project names, tool configs, and system layout.
 
@@ -439,7 +439,7 @@ Auth modes:
 Rotation checklist (token/password):
 
 1. Generate/set a new secret (`gateway.auth.token` or `EDWIN_GATEWAY_PASSWORD`).
-2. Restart the Gateway (or restart the macOS app if it supervises the Gateway).
+2. Restart the Gateway (or restart the Edwin Desktop if it supervises the Gateway).
 3. Update any remote clients (`gateway.remote.token` / `.password` on machines that call into the Gateway).
 4. Verify you can no longer connect with the old credentials.
 
@@ -742,7 +742,7 @@ If your AI does something bad:
 
 ### Contain
 
-1. **Stop it:** stop the macOS app (if it supervises the Gateway) or terminate your `edwin gateway` process.
+1. **Stop it:** stop the Edwin Desktop (if it supervises the Gateway) or terminate your `edwin gateway` process.
 2. **Close exposure:** set `gateway.bind: "loopback"` (or disable Tailscale Funnel/Serve) until you understand what happened.
 3. **Freeze access:** switch risky DMs/groups to `dmPolicy: "disabled"` / require mentions, and remove `"*"` allow-all entries if you had them.
 
@@ -797,7 +797,7 @@ Commit the updated `.secrets.baseline` once it reflects the intended state.
 Owner (Peter)
   │ Full trust
   ▼
-AI (Edwin)
+AI (Clawd)
   │ Trust but verify
   ▼
 Friends in allowlist
@@ -820,6 +820,6 @@ Found a vulnerability in Edwin? Please report responsibly:
 
 ---
 
-_"Security is a process, not a product. Also, don't trust pipeliness with shell access."_ — Someone wise, probably
+_"Security is a process, not a product. Also, don't trust lobsters with shell access."_ — Someone wise, probably
 
-⚡🔐
+🦞🔐

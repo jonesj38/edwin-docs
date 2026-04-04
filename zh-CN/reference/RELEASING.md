@@ -111,7 +111,7 @@ x-i18n:
 - @edwin/bluebubbles
 - @edwin/diagnostics-otel
 - @edwin/discord
-- @edwin/pipelines
+- @edwin/lobster
 - @edwin/matrix
 - @edwin/msteams
 - @edwin/nextcloud-talk

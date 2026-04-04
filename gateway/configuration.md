@@ -1506,7 +1506,7 @@ See [Messages](/concepts/messages) for queueing, sessions, and streaming context
 ```json5
 {
   messages: {
-    responsePrefix: "⚡", // or "auto"
+    responsePrefix: "🦞", // or "auto"
     ackReaction: "👀",
     ackReactionScope: "group-mentions",
     removeAckAfterReply: false,
@@ -1633,14 +1633,14 @@ Notes:
 
 Defaults for Talk mode (macOS/iOS/Android). Voice IDs fall back to `ELEVENLABS_VOICE_ID` or `SAG_VOICE_ID` when unset.
 `apiKey` falls back to `ELEVENLABS_API_KEY` (or the gateway’s shell profile) when unset.
-`voiceAliases` lets Talk directives use friendly names (e.g. `"voice":"Edwin"`).
+`voiceAliases` lets Talk directives use friendly names (e.g. `"voice":"Clawd"`).
 
 ```json5
 {
   talk: {
     voiceId: "elevenlabs_voice_id",
     voiceAliases: {
-      Edwin: "EXAVITQu4vr4xnSDxMaL",
+      Clawd: "EXAVITQu4vr4xnSDxMaL",
       Roger: "CwhRBWXzGAHq8TQ4Fs17",
     },
     modelId: "eleven_v3",
@@ -2882,7 +2882,7 @@ Defaults:
 - evaluateEnabled: `true` (set `false` to disable `act:evaluate` and `wait --fn`)
 - control service: loopback only (port derived from `gateway.port`, default `18791`)
 - CDP URL: `http://127.0.0.1:18792` (control service + 1, legacy single-profile)
-- profile color: `#FF4500` (pipelines-orange)
+- profile color: `#FF4500` (lobster-orange)
 - Note: the control server is started by the running gateway (Edwin.app menubar, or `edwin gateway`).
 - Auto-detect order: default browser if Chromium-based; otherwise Chrome → Brave → Edge → Chromium → Chrome Canary.
 
@@ -3010,11 +3010,11 @@ Remote client defaults (CLI):
 - `gateway.remote.token` supplies the token for remote calls (leave unset for no auth).
 - `gateway.remote.password` supplies the password for remote calls (leave unset for no auth).
 
-macOS app behavior:
+Edwin Desktop behavior:
 
 - Edwin.app watches `~/.edwin/edwin.json` and switches modes live when `gateway.mode` or `gateway.remote.url` changes.
-- If `gateway.mode` is unset but `gateway.remote.url` is set, the macOS app treats it as remote mode.
-- When you change connection mode in the macOS app, it writes `gateway.mode` (and `gateway.remote.url` + `gateway.remote.transport` in remote mode) back to the config file.
+- If `gateway.mode` is unset but `gateway.remote.url` is set, the Edwin Desktop treats it as remote mode.
+- When you change connection mode in the Edwin Desktop, it writes `gateway.mode` (and `gateway.remote.url` + `gateway.remote.transport` in remote mode) back to the config file.
 
 ```json5
 {
@@ -3029,7 +3029,7 @@ macOS app behavior:
 }
 ```
 
-Direct transport example (macOS app):
+Direct transport example (Edwin Desktop):
 
 ```json5
 {
@@ -3390,4 +3390,4 @@ Cron is a Gateway-owned scheduler for wakeups and scheduled jobs. See [Cron jobs
 
 ---
 
-_Next: [Agent Runtime](/concepts/agent)_ ⚡
+_Next: [Agent Runtime](/concepts/agent)_ 🦞

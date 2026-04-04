@@ -1,5 +1,5 @@
 ---
-summary: "macOS app flow for controlling a remote Edwin gateway over SSH"
+summary: "Edwin Desktop flow for controlling a remote Edwin gateway over SSH"
 read_when:
   - Setting up or debugging remote mac control
 title: "Remote Control"
@@ -7,7 +7,7 @@ title: "Remote Control"
 
 # Remote Edwin (macOS ⇄ remote host)
 
-This flow lets the macOS app act as a full remote control for a Edwin gateway running on another host (desktop/server). It’s the app’s **Remote over SSH** (remote run) feature. All features—health checks, Voice Wake forwarding, and Web Chat—reuse the same remote SSH configuration from _Settings → General_.
+This flow lets the Edwin Desktop act as a full remote control for a Edwin gateway running on another host (desktop/server). It’s the app’s **Remote over SSH** (remote run) feature. All features—health checks, Voice Wake forwarding, and Web Chat—reuse the same remote SSH configuration from _Settings → General_.
 
 ## Modes
 
@@ -28,7 +28,7 @@ Remote mode supports two transports:
 2. Ensure `edwin` is on PATH for non-interactive shells (symlink into `/usr/local/bin` or `/opt/homebrew/bin` if needed).
 3. Open SSH with key auth. We recommend **Tailscale** IPs for stable reachability off-LAN.
 
-## macOS app setup
+## Edwin Desktop setup
 
 1. Open _Settings → General_.
 2. Under **Edwin runs**, pick **Remote over SSH** and set:

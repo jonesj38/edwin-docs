@@ -14,7 +14,7 @@ Related:
 
 - Skills system: [Skills](/tools/skills)
 - Skills config: [Skills config](/tools/skills-config)
-- Edwin Skills installs: [Edwin Skills](/tools/edwin-skills)
+- ClawHub installs: [ClawHub](/tools/clawhub)
 
 ## Commands
 

@@ -275,11 +275,11 @@ edwin nodes notify --node <idOrNameOrIp> --title "Ping" --body "Gateway ready"
 Notes:
 
 - `system.run` returns stdout/stderr/exit code in the payload.
-- `system.notify` respects notification permission state on the macOS app.
+- `system.notify` respects notification permission state on the Edwin Desktop.
 - `system.run` supports `--cwd`, `--env KEY=VAL`, `--command-timeout`, and `--needs-screen-recording`.
 - `system.notify` supports `--priority <passive|active|timeSensitive>` and `--delivery <system|overlay|auto>`.
 - macOS nodes drop `PATH` overrides; headless node hosts only accept `PATH` when it prepends the node host PATH.
-- On macOS node mode, `system.run` is gated by exec approvals in the macOS app (Settings → Exec approvals).
+- On macOS node mode, `system.run` is gated by exec approvals in the Edwin Desktop (Settings → Exec approvals).
   Ask/allowlist/full behave the same as the headless node host; denied prompts return `SYSTEM_RUN_DENIED`.
 - On headless node host, `system.run` is gated by exec approvals (`~/.edwin/exec-approvals.json`).
 
