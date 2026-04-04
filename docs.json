@@ -6,8 +6,8 @@
     "library": "lucide"
   },
   "logo": {
-    "light": "/assets/edwin-logo-text.png",
-    "dark": "/assets/edwin-logo-text-dark.png"
+    "light": "/assets/edwin-logo.png",
+    "dark": "/assets/edwin-logo.png"
   },
   "fonts": {
     "body": {
@@ -17,7 +17,7 @@
       "family": "DM Sans"
     }
   },
-  "favicon": "/assets/edwin-logo-text.png",
+  "favicon": "/assets/favicon-32x32.png",
   "colors": {
     "primary": "#FF5A36",
     "dark": "#FF5A36",

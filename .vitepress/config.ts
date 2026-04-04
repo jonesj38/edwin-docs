@@ -28,7 +28,7 @@ export default defineConfig({
   ],
 
   // Head meta
-  head: [["link", { rel: "icon", href: "/assets/edwin-logo-text.png" }]],
+  head: [["link", { rel: "icon", href: "/assets/favicon-32x32.png" }]],
 
   // Vite config
   vite: {
@@ -63,7 +63,7 @@ export default defineConfig({
 
   themeConfig: {
     // Logo
-    logo: "/assets/edwin-logo-text.png",
+    logo: "/assets/edwin-logo.png",
 
     // Search
     search: {
