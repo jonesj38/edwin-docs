@@ -16,16 +16,9 @@ x-i18n:
 
 <p align="center">
     <img
-        src="/assets/edwin-logo-text-dark.png"
+        src="/assets/edwin-logo.png"
         alt="Edwin"
-        width="500"
-        class="dark:hidden"
-    />
-    <img
-        src="/assets/edwin-logo-text.png"
-        alt="Edwin"
-        width="500"
-        class="hidden dark:block"
+        width="220"
     />
 </p>
 
