@@ -126,6 +126,13 @@ Example:
 }
 ```
 
+## Knowledge
+
+Edwin also has a Knowledge layer for structured source material, curated disciplines, and inspectable Shad runs.
+
+- [Knowledge](/concepts/knowledge)
+- [Memory](/concepts/memory)
+
 ## Start here
 
 <Columns>

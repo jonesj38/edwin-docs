@@ -835,6 +835,7 @@
                   "concepts/session-pruning",
                   "concepts/session-tool",
                   "concepts/memory",
+                  "concepts/knowledge",
                   "concepts/compaction"
                 ]
               },
