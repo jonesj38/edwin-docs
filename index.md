@@ -27,7 +27,6 @@ curl -fsSL https://edwinpai.com/install.sh | bash
 
 - [GitHub](https://github.com/jonesj38/edwin)
 - [Releases](https://github.com/jonesj38/edwin/releases)
-- [Community](https://discord.gg/clawd)
 
 ## Notes
 
